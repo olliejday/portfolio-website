@@ -1,12 +1,14 @@
 import { ButtonArrow } from "./buttons"
-import React, { useState } from "react"
+import * as React from "react"
+import { useState } from "react"
 
 
-function NavBarButton({ className, children }) {
+function NavBarButton({ className, children } : {className: string, children: string}) {
   return <div className={"h-full flex flex-col justify-center items-center group mx-3 " + className}>
     <button className="font-bold whitespace-nowrap">{children}</button>
   </div>
 }
+NavBarButton.defaultProps = {className: ""}
 
 function NavBarMenu({ className }) {
   return <>

@@ -1,5 +1,5 @@
 import { ButtonArrow } from "./buttons"
-import React from "react"
+import * as React from "react"
 
 export function IndexPageBody() {
   return <div className="xl:w-2/3 lg:w-3/4 lg:mx-auto px-10">
