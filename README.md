@@ -11,8 +11,12 @@
 
 # TODO
 
-* 404 page
+* Graphql  post content on front page
+* Style offset cards for posts on index page
 * Article page
+* Style and link up nav bar (with scrollTo, scroll to ref?)
+* Favicons, metadata etc (don't want all from old portfolio but maybe some?)  
+* 404 page
 
 
 Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.

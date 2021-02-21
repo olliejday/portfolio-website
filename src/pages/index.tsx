@@ -1,6 +1,6 @@
 import * as React from "react"
 import Seo from "../components/Seo"
-import { AngleGradient, BlueBGRotated } from "../components/angleGradients"
+import { BlueBGRotated } from "../components/angleGradients"
 import { Navbar } from "../components/Navbar"
 import { IndexPageBody } from "../components/IndexPageBody"
 import Layout from "../components/Layout"
@@ -12,7 +12,9 @@ export default function IndexPage({data}) {
         <Layout>
           <Seo title={data.site.siteMetadata.title} />
           <Navbar />
-          <Hero title={"Oliver Day Portfolio"} about={"This is my about"}/>
+          <Hero title={data.site.siteMetadata.title}
+                about={data.markdownFront.childMdx.frontmatter.about}
+                image={data.imageFront.childImageSharp.fluid} />
           <div className="w-full pb-52 bg-gray-100">
             <IndexPageBody />
           </div>
@@ -29,7 +31,43 @@ export const query = graphql`
     site {
       siteMetadata {
         title
+        description
       }
     }
+  markdownFront: file(relativePath: {eq: "markdown/about/home-about.mdx"}) {
+      childMdx {
+        frontmatter {
+          about
+        }
+      }
+    }
+    imageFront: file(relativePath: { eq: "images/portrait_pic.png" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }    
+    markdownPages: allMdx (
+      filter: { fields: { slug: { ne: null } } }
+      sort: { fields: frontmatter___order, order: DESC }
+    ){
+    nodes {
+      fields {
+        slug
+      }
+      frontmatter {
+          title
+          subtitle
+          image {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+    }
   }
+ }
 `

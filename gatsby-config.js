@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Line Payment Platform`,
-    description: `Line - A payment platform for the modern web.`,
-    author: `Ollie Day`,
+    title: `Oliver Day Portfolio`,
+    description: "Oliver Day web design and development portfolio",
+    author: `Oliver Day`,
   },
   plugins: [
     'gatsby-plugin-postcss',
@@ -19,14 +19,57 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Oliver Day Portfolio`,
+        short_name: `O Day`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/assets/images/undraw_Data_trends_re_2cdy.svg`, // This path is relative to the root of the site.
+        icon: `src/assets/images/portrait_pic.png`, // This path is relative to the root of the site.
       },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        // a workaround to solve mdx-remark plugin compat issue
+        // https://github.com/gatsbyjs/gatsby/issues/15486
+        plugins: [
+          `gatsby-remark-images`,
+          {
+            resolve: `gatsby-remark-images-zoom`, // Important!
+            options: {margin: 48, background: "rgba(0, 0, 0, 0.75)"}
+          }
+        ],
+        remarkPlugins: [require('remark-unwrap-images')],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
+              showCaptions: true,
+              linkImagesToOriginal: false // Important!
+            }
+          },
+          `gatsby-remark-images-zoom`,
+          `gatsby-remark-figure-caption`,
+          "gatsby-remark-copy-relative-linked-files",
+          `gatsby-remark-normalize-paths`,
+          {
+            resolve: `gatsby-remark-table-of-contents`,
+            options: {
+              exclude: "Table of Contents",
+              tight: false,
+              ordered: false,
+              fromHeading: 2,
+              toHeading: 3,
+              className: "table-of-contents"
+            }
+          },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              icon: false
+            }
+          }
+        ]
+      }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
