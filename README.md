@@ -11,6 +11,7 @@
 
 # TODO
 
+* Index try have not everything absolute (eg. on top part) so that it pushes other content down 
 * Graphql  post content on front page
 * Style offset cards for posts on index page
 * Article page

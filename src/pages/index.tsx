@@ -7,22 +7,20 @@ import Layout from "../components/Layout"
 import Hero from "../components/Hero"
 import { graphql } from "gatsby"
 
-export default function IndexPage({data}) {
-    return (
-        <Layout>
-          <Seo title={data.site.siteMetadata.title} />
-          <Navbar />
-          <Hero title={data.site.siteMetadata.title}
-                about={data.markdownFront.childMdx.frontmatter.about}
-                image={data.imageFront.childImageSharp.fluid} />
-          <div className="w-full pb-52 bg-gray-100">
-            <IndexPageBody />
-          </div>
+export default function IndexPage({ data }) {
+  return (
+    <Layout>
+      <Seo title={data.site.siteMetadata.title} />
+      <Navbar />
+      <Hero title={data.site.siteMetadata.title}
+            about={data.markdownFront.childMdx.frontmatter.about}
+            image={data.imageFront.childImageSharp.fluid} />
+      <IndexPageBody data={data} />
 
-          <BlueBGRotated />
+      {/*<BlueBGRotated />*/}
 
-        </Layout>
-    )
+    </Layout>
+  )
 }
 
 
