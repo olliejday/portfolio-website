@@ -44,17 +44,13 @@ HeroText.defaultProps = {isTop: false }
 
 function HeroDisplay({image} : HeroDisplayTypes) {
   return <div
-    className="relative col-start-10 col-span-3 md:col-start-9 xl:ml-0  mt-48 ml-10 row-end-2 sm:block hidden">
-    {/*<div className="relative bg-gray-100 bg-opacity-50 shadow-2xl rounded-xl"*/}
-    {/*     style={{ "height": 500, "width": 600 }}>*/}
-    {/* TODO: gatsby img*/}
+    className="relative col-span-4 col-start-8 row-end-3 sm:block hidden">
     <GatsbyImage fluid={image} alt={"Close up portrait of person"} />
-    {/*</div>*/}
   </div>
 }
 
 export default function Hero({ title, about, image }: HeroTypes & HeroDisplayTypes) {
-  return <div className="w-full h-full grid grid-cols-12 grid-rows-4 gap-4">
+  return <div className="w-full h-full grid grid-cols-12 grid-rows-4 gap-4 pb-10">
     <HeroText title={title} about={about} />
     <AngleGradient />
     <HeroText isTop title={title} about={about} />

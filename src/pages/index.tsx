@@ -9,9 +9,8 @@ import { graphql } from "gatsby"
 
 export default function IndexPage({ data }) {
   return (
-    <Layout>
+    <Layout title={data.site.siteMetadata.title}>
       <Seo title={data.site.siteMetadata.title} />
-      <Navbar />
       <Hero title={data.site.siteMetadata.title}
             about={data.markdownFront.childMdx.frontmatter.about}
             image={data.imageFront.childImageSharp.fluid} />
@@ -46,25 +45,27 @@ export const query = graphql`
         }
       }
     }    
-    markdownPages: allMdx (
-      filter: { fields: { slug: { ne: null } } }
-      sort: { fields: frontmatter___order, order: DESC }
-    ){
-    nodes {
-      fields {
-        slug
-      }
-      frontmatter {
-          title
-          subtitle
-          image {
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
+    uxPages : allFile(filter: {relativeDirectory: {eq: "markdown/ux"}}, 
+    sort: {fields: childMdx___frontmatter___order, order: DESC}) {
+    edges {
+      node {
+        childMdx {
+          frontmatter {
+            title
+            subtitle
+            image {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid
+                }
               }
             }
           }
+          fields {
+            slug
+          }
         }
+      }
     }
   }
  }

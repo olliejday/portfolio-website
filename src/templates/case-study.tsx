@@ -1,4 +1,4 @@
-import React from "react"
+import * as React from "react"
 import { graphql } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
@@ -10,10 +10,10 @@ import "./styles/pages.css"  // don't use module here bc need to access class na
 
 const shortcodes = { Link } // Provide common components here
 
-export default function PageTemplate({ data: { mdx } }) {
+export default function PageTemplate({ data: { site, mdx } }) {
   return (
-    <Layout>
-      <Seo title={mdx.frontmatter.title} description={mdx.excerpt} />
+    <Layout title={site.siteMetadata.title} >
+    <Seo title={mdx.frontmatter.title} description={mdx.excerpt} />
       <div className="caseStudyPage">
         <h1>{mdx.frontmatter.title}</h1>
         <MDXProvider components={shortcodes}>
@@ -28,6 +28,12 @@ export default function PageTemplate({ data: { mdx } }) {
 
 export const query = graphql`
   query($slug: String!) {
+    site {
+        siteMetadata {
+          title
+          description
+        }
+      }
     mdx(fields: { slug: { eq: $slug } }) {
       body
       frontmatter {
