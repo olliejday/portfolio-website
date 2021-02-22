@@ -1,7 +1,6 @@
 import * as React from "react"
 import Seo from "../components/Seo"
 import { BlueBGRotated } from "../components/angleGradients"
-import { Navbar } from "../components/Navbar"
 import { IndexPageBody } from "../components/IndexPageBody"
 import Layout from "../components/Layout"
 import Hero from "../components/Hero"
@@ -9,7 +8,7 @@ import { graphql } from "gatsby"
 
 export default function IndexPage({ data }) {
   return (
-    <Layout title={data.site.siteMetadata.title}>
+    <Layout>
       <Seo title={data.site.siteMetadata.title} />
       <Hero title={data.site.siteMetadata.title}
             about={data.markdownFront.childMdx.frontmatter.about}

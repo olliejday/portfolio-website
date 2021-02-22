@@ -12,6 +12,13 @@
 # TODO
 
 * Font sizing on index page
+* https://www.apple.com/iphone-12/
+    bolder text
+    larger images with no BG
+    font colour the same hue but darker value as bg
+    bit of movement up and/or fade in on images and text
+    white border on body
+    about page make text larger and scroll down in sections
 * Link up index page
 * About page  
 * Article page

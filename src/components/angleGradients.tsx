@@ -2,7 +2,7 @@ import * as React from "react"
 
 export function AngleGradient() {
   return <div
-    className="absolute transform -translate-x-52 -translate-y-96 lg:top-20 top-0
+    className="absolute transform -translate-x-40 -translate-y-96 lg:top-20 top-0
     -rotate-12 bg-gradient-to-r from-pink-500 via-yellow-300 to-purple-600"
     style={{ height: 600, width: 2000 }} />
 }

@@ -40,9 +40,9 @@ function HeroText({ title, about, isTop }: HeroTypes & HeroTextTypes) {
   </div>
 }
 
-HeroText.defaultProps = {isTop: false }
+HeroText.defaultProps = { isTop: false }
 
-function HeroDisplay({image} : HeroDisplayTypes) {
+function HeroDisplay({ image }: HeroDisplayTypes) {
   return <div
     className="relative col-span-4 col-start-8 row-end-3 sm:block hidden">
     <GatsbyImage fluid={image} alt={"Close up portrait of person"} />
@@ -50,10 +50,12 @@ function HeroDisplay({image} : HeroDisplayTypes) {
 }
 
 export default function Hero({ title, about, image }: HeroTypes & HeroDisplayTypes) {
-  return <div className="w-full h-full grid grid-cols-12 grid-rows-4 gap-4 pb-10">
+  return <div className="w-full h-full grid grid-cols-12 grid-rows-4 gap-4 pb-10"
+              // account for nav bar
+              style={{ marginTop: -20 }}>
     <HeroText title={title} about={about} />
     <AngleGradient />
     <HeroText isTop title={title} about={about} />
-    <HeroDisplay image={image}/>
+    <HeroDisplay image={image} />
   </div>
 }
