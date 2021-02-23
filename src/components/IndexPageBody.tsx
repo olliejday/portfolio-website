@@ -79,10 +79,10 @@ export function IndexPageBody({ data }: any) {
     // every third is a full
     // then two as a double
 
-    devPreviews.push(<FullWidthPreview key={"ux" + i} node={devEdges[i].node} bgColour="bg-blue-200" imageLeft={(i / 3) % 2 === 0} />)
+    devPreviews.push(<FullWidthPreview key={"ux" + i} node={devEdges[i].node} bgColour="bg-gray-200" imageLeft={(i / 3) % 2 === 0} />)
     if (i + 2 < devEdges.length) devPreviews.push(<DoublePreview key={"ux" + i + 1} nodeLeft={devEdges[i + 1].node} nodeRight={devEdges[i + 2].node}
-                                                             bgColour={"bg-blue-100"} />)
-    else if (i + 1 < devEdges.length) devPreviews.push(<FullWidthPreview key={"ux" + i + 1} node={devEdges[i + 1].node} bgColour="bg-blue-100"
+                                                             bgColour={"bg-gray-100"} />)
+    else if (i + 1 < devEdges.length) devPreviews.push(<FullWidthPreview key={"ux" + i + 1} node={devEdges[i + 1].node} bgColour="bg-gray-100"
                                                                      imageLeft={(i / 3) % 2 !== 0} />)
   }
   return <div>

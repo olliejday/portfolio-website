@@ -36,7 +36,7 @@
 @media only screen and (min-width: 1536px) {
     .table-of-contents {
         position: fixed;
-        left: 7.5%;
+        left: 3%;
         top: 7.5em;
         z-index: 0;
     }

@@ -26,7 +26,7 @@ export const query = graphql`
       }
     } 
     uxPages : allFile(filter: {relativeDirectory: {eq: "pages/ux"}}, 
-    sort: {fields: childMdx___frontmatter___order, order: DESC}) {
+    sort: {fields: childMdx___frontmatter___order, order: ASC}) {
     edges {
       node {
         childMdx {
@@ -49,7 +49,7 @@ export const query = graphql`
     }
   }
   devPages : allFile(filter: {relativeDirectory: {eq: "pages/dev"}}, 
-    sort: {fields: childMdx___frontmatter___order, order: DESC}) {
+    sort: {fields: childMdx___frontmatter___order, order: ASC}) {
     edges {
       node {
         childMdx {

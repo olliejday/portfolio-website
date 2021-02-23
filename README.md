@@ -4,11 +4,11 @@
 ## TODO
 
 * About page responsive
-* Article page improve styling - eg. colours
-* Index page content (dev is just duplicated ux atm)
+* Index page responsive
 
 * *__\*Can probs host at this points\*__*
 
+* Article page improve styling - eg. colours
 * Scroll animations: about and index bit of movement up and/or fade in on images and text
 * Page transition effects? See apple
 * Colours
