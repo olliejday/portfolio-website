@@ -2,6 +2,7 @@ import * as React from "react"
 import { ButtonArrow } from "./buttons"
 import { AngleGradient } from "./angleGradients"
 import GatsbyImage from "gatsby-image"
+import { Link } from "gatsby"
 
 const portraitPic = require("../assets/images/portrait_pic2.png")
 
@@ -22,6 +23,7 @@ interface HeroDisplayTypes {
 }
 
 function HeroText({ title, about, isTop }: HeroTypes & HeroTextTypes) {
+  const aboutSlug = "/about"
   // rendered twice but only show buttons once
   return <div className={"row-start-2 col-start-2 col-span-10 \
     sm:col-start-2 sm:col-span-6 \
@@ -33,9 +35,9 @@ function HeroText({ title, about, isTop }: HeroTypes & HeroTextTypes) {
       <p className="text-lg mt-8">{about}</p>
     </div>
     {isTop ? <div className="flex-row items-center flex mt-5 opacity-100">
-      <ButtonArrow
+      <Link to={aboutSlug}><ButtonArrow
         containerClassNames="mr-4"
-        classNames="mr-4 rounded-full py-1.5 px-3 hover:bg-gray-700 bg-gray-900 text-gray-50 font-bold flex">About </ButtonArrow>
+        classNames="mr-4 rounded-full py-1.5 px-3 hover:bg-gray-700 bg-gray-900 text-gray-50 font-bold flex">About </ButtonArrow> </Link>
     </div> : null}
   </div>
 }

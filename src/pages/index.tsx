@@ -1,6 +1,5 @@
 import * as React from "react"
 import Seo from "../components/Seo"
-import { BlueBGRotated } from "../components/angleGradients"
 import { IndexPageBody } from "../components/IndexPageBody"
 import Layout from "../components/Layout"
 import Hero from "../components/Hero"
@@ -45,6 +44,29 @@ export const query = graphql`
       }
     }    
     uxPages : allFile(filter: {relativeDirectory: {eq: "markdown/ux"}}, 
+    sort: {fields: childMdx___frontmatter___order, order: DESC}) {
+    edges {
+      node {
+        childMdx {
+          frontmatter {
+            title
+            subtitle
+            image {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+          fields {
+            slug
+          }
+        }
+      }
+    }
+  }
+  devPages : allFile(filter: {relativeDirectory: {eq: "markdown/dev"}}, 
     sort: {fields: childMdx___frontmatter___order, order: DESC}) {
     edges {
       node {

@@ -23,10 +23,10 @@ Other refs
   http://www.sanghan.co/
   https://jasonyuan.design/
   https://www.benminard.me/
-* Think this captures main scroll animations https://codesandbox.io/s/framer-motion-parallax-effect-nhsh3
-* Link up index page
-* About page  
-* Article page
+* Page transition effects? See apple
+* About and Article page improve styling
+* Index page content (dev is just duplicated ux atm)  
+* Unify colours eg. index page purple?  
 * Style and link up nav bar (with scrollTo, scroll to ref?)
 * Favicons, metadata etc (don't want all from old portfolio but maybe some?)  
 * 404 page

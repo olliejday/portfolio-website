@@ -13,7 +13,14 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       createNodeField({
         node,
         name: `slug`,
-        value: slug,
+        value: slug
+      })
+    } else if (fileNode.relativeDirectory === "markdown/dev") {
+      const slug = createFilePath({ node, getNode, basePath: `markdown/dev` })
+      createNodeField({
+        node,
+        name: `slug`,
+        value: slug
       })
     }
   }
@@ -39,7 +46,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   `)
   if (result.errors) {
-    reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query')
+    reporter.panicOnBuild("🚨  ERROR: Loading \"createPages\" query")
   }
   // Create blog post pages.
   const posts = result.data.allMdx.edges
@@ -53,7 +60,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: path.resolve(`./src/templates/case-study.tsx`),
       // You can use the values in this context in
       // our page layout component
-      context: { slug: node.fields.slug },
+      context: { slug: node.fields.slug }
     })
   })
 }
