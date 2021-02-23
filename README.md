@@ -27,6 +27,7 @@ Other refs
 * About and Article page improve styling
 * Index page content (dev is just duplicated ux atm)  
 * Unify colours eg. index page purple?  
+* Fonts  
 * Style and link up nav bar (with scrollTo, scroll to ref?)
 * Favicons, metadata etc (don't want all from old portfolio but maybe some?)  
 * 404 page

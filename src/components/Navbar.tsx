@@ -1,11 +1,24 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
+import scrollTo from "gatsby-plugin-smoothscroll"
 
 function NavBarButton({ className, children, to }: { className: string, children: string, to: string }) {
   return <div className={"h-full flex flex-col justify-center items-center group mx-3"}>
-    <Link className={className ? className : "font-bold whitespace-nowrap"}
-          to={to}
-    >{children}</Link>
+    <button className={className ? className : "font-bold whitespace-nowrap"}
+            onClick={() => {
+              const [toPage, toSection] = to.split("#")
+              // if already on index page and want index page
+              if (window.location.pathname === "/" && toPage === "/") {
+                scrollTo(to.substring(1))
+              }
+              else{
+                // go to page
+                navigate(toPage)
+                // wait to navigate to other page then scroll
+                setTimeout(() => scrollTo("#" + toSection), 250)
+              }
+            }}
+    >{children}</button>
   </div>
 }
 

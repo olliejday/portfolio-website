@@ -5,6 +5,7 @@ import Layout from "../components/Layout"
 import Hero from "../components/Hero"
 import { graphql } from "gatsby"
 
+
 export default function IndexPage({ data }) {
   return (
     <Layout>
