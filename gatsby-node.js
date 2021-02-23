@@ -8,15 +8,15 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   // `File` node here
   if (node.internal.type === "Mdx") {
     const fileNode = getNode(node.parent)
-    if (fileNode.relativeDirectory === "markdown/ux") {
-      const slug = createFilePath({ node, getNode, basePath: `markdown/ux` })
+    if (fileNode.relativeDirectory === "pages/ux") {
+      const slug = createFilePath({ node, getNode, basePath: `pages/ux` })
       createNodeField({
         node,
         name: `slug`,
         value: slug
       })
-    } else if (fileNode.relativeDirectory === "markdown/dev") {
-      const slug = createFilePath({ node, getNode, basePath: `markdown/dev` })
+    } else if (fileNode.relativeDirectory === "pages/dev") {
+      const slug = createFilePath({ node, getNode, basePath: `pages/dev` })
       createNodeField({
         node,
         name: `slug`,

@@ -4,7 +4,7 @@ import Layout from "../components/Layout"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import GatsbyImage from "gatsby-image"
-import about from "../assets/markdown/about/about"
+import about from "../assets/pages/about/aboutContents"
 
 function Timeline({ data }: { data: [{ date: string, title: string, subtitle: string }] }) {
   return <div className="flex flex-col justify-around">
@@ -42,8 +42,7 @@ function AboutSection({ data }: { data: any }) {
   const body = data.hasOwnProperty("body") ? data.body.map(b => <p
     className={`text-8xl font-bold my-10`}>{b}</p>) : null
   const contact = data.hasOwnProperty("cv") ? <Contact cv={data.cv} email={data.email} /> : null
-  const image = data.hasOwnProperty("image") ?
-    <img src={data.image} className="w-1/3 absolute bottom-10 right-5 z-0" alt={data.alt} /> : null
+  const image = data.hasOwnProperty("image") ? <div className="w-1/3 absolute bottom-10 right-5 z-0">{data.image}</div> : null
   const timeline = data.hasOwnProperty("timeline") ? <Timeline data={data.timeline} /> : null
   const aboutList = data.hasOwnProperty("list") ? <AboutList data={data.list} /> : null
   const fullpage = timeline !== null
@@ -82,4 +81,3 @@ export default function AboutPage() {
     </Layout>
   )
 }
-

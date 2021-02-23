@@ -11,25 +11,23 @@
 
 # TODO
 
-* Font sizing on index page
 * About page responsive  
 * https://www.apple.com/iphone-12/
-    bolder text
-    larger images with no BG
-    font colour the same hue but darker value as bg
-    bit of movement up and/or fade in on images and text
-    white border on body
-    about page make text larger and scroll down in sections
+    x bolder text
+    index larger images rendered in phone/screen 3d model with no BG
+    index font colour the same hue but darker value as bg (see about page)
+    about and index bit of movement up and/or fade in on images and text
+    x white border on body
+    x about page make text larger and scroll down in sections
 Other refs
   http://www.sanghan.co/
   https://jasonyuan.design/
   https://www.benminard.me/
 * Page transition effects? See apple
-* About and Article page improve styling
+* Article page improve styling - eg. colours
 * Index page content (dev is just duplicated ux atm)  
-* Unify colours eg. index page purple?  
+* Unify colours eg. index page purple?  eg. nav bar BG
 * Fonts  
-* Style and link up nav bar (with scrollTo, scroll to ref?)
 * Favicons, metadata etc (don't want all from old portfolio but maybe some?)  
 * 404 page
 

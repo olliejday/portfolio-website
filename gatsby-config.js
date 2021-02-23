@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Oliver Day Portfolio`,
-    description: "Oliver Day web design and development portfolio",
+    title: `Oliver Day's Portfolio`,
+    description: "Oliver Day's web design and development portfolio",
     author: `Oliver Day`,
   },
   plugins: [

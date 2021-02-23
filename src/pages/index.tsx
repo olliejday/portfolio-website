@@ -2,7 +2,7 @@ import * as React from "react"
 import Seo from "../components/Seo"
 import { IndexPageBody } from "../components/IndexPageBody"
 import Layout from "../components/Layout"
-import Hero from "../components/Hero"
+import HeroIndex from "../components/HeroIndex"
 import { graphql } from "gatsby"
 
 
@@ -10,13 +10,8 @@ export default function IndexPage({ data }) {
   return (
     <Layout>
       <Seo title={data.site.siteMetadata.title} />
-      <Hero title={data.site.siteMetadata.title}
-            about={data.markdownFront.childMdx.frontmatter.about}
-            image={data.imageFront.childImageSharp.fluid} />
+      <HeroIndex title={data.site.siteMetadata.title} />
       <IndexPageBody data={data} />
-
-      {/*<BlueBGRotated />*/}
-
     </Layout>
   )
 }
@@ -29,22 +24,8 @@ export const query = graphql`
         title
         description
       }
-    }
-  markdownFront: file(relativePath: {eq: "markdown/about/home-about.mdx"}) {
-      childMdx {
-        frontmatter {
-          about
-        }
-      }
-    }
-    imageFront: file(relativePath: { eq: "images/portrait_pic.png" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }    
-    uxPages : allFile(filter: {relativeDirectory: {eq: "markdown/ux"}}, 
+    } 
+    uxPages : allFile(filter: {relativeDirectory: {eq: "pages/ux"}}, 
     sort: {fields: childMdx___frontmatter___order, order: DESC}) {
     edges {
       node {
@@ -67,7 +48,7 @@ export const query = graphql`
       }
     }
   }
-  devPages : allFile(filter: {relativeDirectory: {eq: "markdown/dev"}}, 
+  devPages : allFile(filter: {relativeDirectory: {eq: "pages/dev"}}, 
     sort: {fields: childMdx___frontmatter___order, order: DESC}) {
     edges {
       node {

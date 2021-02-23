@@ -4,8 +4,8 @@ import { Link } from "gatsby"
 
 function PreviewText({ data }) {
   return <>
-    <Link to={data.fields.slug}><p className="mb-5 text-purple-500 font-bold">{data.frontmatter.subtitle}</p></Link>
-    <Link to={data.fields.slug}><p className="text-4xl my-5 text-gray-700 font-bold">{data.frontmatter.title}</p></Link>
+    <Link to={data.fields.slug}><p className="mb-5 text-3xl text-purple-500 font-bold">{data.frontmatter.subtitle}</p></Link>
+    <Link to={data.fields.slug}><p className="text-7xl my-5 text-gray-700 font-bold">{data.frontmatter.title}</p></Link>
   </>
 }
 
