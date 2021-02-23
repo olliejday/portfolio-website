@@ -34,7 +34,7 @@ function NavBarMenu() {
 
 export function Navbar({ title }: { title: string }) {
   return <div
-    className="flex flex-col items-center sm:flex-row relative z-20 h-20 justify-around w-full
+    className="flex flex-col items-center sm:flex-row relative z-20 h-10 justify-around w-full
     bg-opacity-50 bg-blue-600 text-gray-50">
     <div className="flex items-center">
       <NavBarButton className="font-extrabold text-2xl" to="/">{title}</NavBarButton>

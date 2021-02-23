@@ -12,6 +12,7 @@
 # TODO
 
 * Font sizing on index page
+* About page responsive  
 * https://www.apple.com/iphone-12/
     bolder text
     larger images with no BG
