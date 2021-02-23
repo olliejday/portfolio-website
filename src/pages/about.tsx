@@ -5,7 +5,7 @@ import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import GatsbyImage from "gatsby-image"
 
-export default function IndexPage({ data }) {
+export default function AboutPage({ data }) {
   const post = data.markdown.childMdx
   return (
     <Layout>

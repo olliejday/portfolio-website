@@ -19,6 +19,7 @@
     bit of movement up and/or fade in on images and text
     white border on body
     about page make text larger and scroll down in sections
+* Think this captures main scroll animations https://codesandbox.io/s/framer-motion-parallax-effect-nhsh3
 * Link up index page
 * About page  
 * Article page
