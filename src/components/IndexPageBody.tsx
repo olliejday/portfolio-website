@@ -29,12 +29,13 @@ function FullWidthPreview({ node, bgColour, imageLeft }) {
 FullWidthPreview.defaultProps = { imageLeft: false }
 
 function PreviewImage({ data }) {
-  return <GatsbyImage fluid={data.frontmatter.image.childImageSharp.fluid}
-                      className="md:my-0 my-5 bg-opacity-20 bg-black"
-                      style={{ height: "100%" }}
-                      imgStyle={{ objectFit: "contain", pointerEvents: "none" }}
-                      alt="Preview of design"
-  />
+  return <div className="relative w-full h-full overflow-hidden">
+    <GatsbyImage fluid={data.frontmatter.image.childImageSharp.fluid}
+                 className="absolute bg-transparent"
+                 imgStyle={{ objectFit: "contain", pointerEvents: "none" }}
+                 alt="Preview of design"
+    />
+  </div>
 }
 
 function HalfWidthPreview({ node }) {
