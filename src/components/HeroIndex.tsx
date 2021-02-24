@@ -63,9 +63,7 @@ function HeroDisplay() {
 }
 
 export default function HeroIndex({ title }: HeroTypes) {
-  return <div className="w-full h-full grid grid-cols-12 grid-rows-6 gap-4 pb-10"
-    // account for nav bar
-              style={{ marginTop: -20 }}>
+  return <div className="w-full grid grid-cols-12 grid-rows-1 mt-20 gap-4 pb-10">
     <HeroText title={title} />
     <AngleGradient />
     <HeroText isTop title={title} />

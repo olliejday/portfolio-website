@@ -10,8 +10,8 @@ export default function IndexPage({ data }) {
   return (
     <Layout>
       <Seo title={data.site.siteMetadata.title} />
-      <HeroIndex title={data.site.siteMetadata.title} />
-      <IndexPageBody data={data} />
+        <HeroIndex title={data.site.siteMetadata.title} />
+        <IndexPageBody data={data} />
     </Layout>
   )
 }
