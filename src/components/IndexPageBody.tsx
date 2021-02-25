@@ -2,11 +2,16 @@ import * as React from "react"
 import GatsbyImage from "gatsby-image"
 import { Link } from "gatsby"
 
+const textLg = "text-7xl"
+const textMd = "text-4xl"
+
 function PreviewText({ data }) {
   return <>
-    <Link to={data.fields.slug}><p className="mb-5 text-3xl text-purple-500 font-bold">{data.frontmatter.subtitle}</p>
+    <Link to={data.fields.slug}><p className={`${textLg} my-5 text-gray-700 font-bold`}>{data.frontmatter.title}</p>
     </Link>
-    <Link to={data.fields.slug}><p className="text-7xl my-5 text-gray-700 font-bold">{data.frontmatter.title}</p></Link>
+    <Link to={data.fields.slug}><p
+      className={`${textMd} mt-5 text-gray-600 font-bold`}>{data.frontmatter.subtitle}</p>
+    </Link>
   </>
 }
 
@@ -14,8 +19,10 @@ function FullWidthPreview({ node, bgColour, imageLeft }) {
   const data = node.childMdx
   return <div className={`${bgColour}`}>
     <div
-      className={"xl:w-2/3 md:w-3/4 mx-auto px-10 py-16 box-border grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 grid-flow-row-dense gap-5"}>
-      <div className={`flex flex-col justify-end mx-5 pt-28 row-start-1 ${imageLeft ? "lg:col-start-2" : "lg:col-start-1"}`}>
+      className={"w-full mx-auto px-10 lg:px-28 py-8 box-border grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 grid-flow-row-dense md:gap-16"}>
+      <div
+        className={`flex flex-col justify-end mx-5 lg:pt-28 pt-10 pb-16 row-start-1 ${imageLeft ? "lg:col-start-2" : "lg:col-start-1"}`}
+      style={{minHeight: "24rem"}}>
         <PreviewText data={data} />
       </div>
       <div
@@ -53,7 +60,7 @@ function HalfWidthPreview({ node }) {
 
 function DoublePreview({ nodeLeft, nodeRight, bgColour }) {
   return <div className={`h-80vh overflow-y-hidden ${bgColour}`}>
-    <div className={"xl:w-2/3 md:w-3/4 md:mx-auto h-full py-10 flex flex-col sm:flex-row"}>
+    <div className={"w-full md:mx-auto h-full py-10 flex flex-col sm:flex-row"}>
       <HalfWidthPreview node={nodeLeft} />
       <HalfWidthPreview node={nodeRight} />
     </div>

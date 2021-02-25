@@ -10,7 +10,6 @@ import GatsbyImage from "gatsby-image"
 // Each item in array is a section on the about page
 const about = [
   {
-    title: "About",
     image: <StaticQuery
       query={
         graphql`

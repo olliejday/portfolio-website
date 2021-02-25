@@ -5,6 +5,10 @@ import { Link } from "gatsby"
 import { preview } from "../assets/pages/about/aboutContents"
 
 
+const textTitle = "lg:text-9xl md:text-8xl text-6xl"
+const textBodyLg = "xl:text-3xl md:text-2xl text-xl"
+const textBodySm = "xl:text-2xl md:text-xl text-lg"
+
 interface HeroTextTypes {
   title: string,
   isTop: boolean
@@ -17,12 +21,14 @@ interface HeroTypes {
 
 function HeroTextContent(props: { title: string, element: (item) => JSX.Element }) {
   return <>
-    <div className="flex"><p
-      className="bg-clip-text text-transparent bg-gradient-to-r from-green-900 to-blue-900 tracking-tight
-          lg:text-9xl text-6xl font-extrabold leading-tight">{props.title}</p></div>
-    <p className="text-3xl font-bold my-5">{preview.body.join(" ")}</p>
-    <p className="text-2xl my-5">{preview.subtitle}</p>
-    <div className="flex flex-col text-2xl">
+    <div className="flex">
+      <p
+        className={`bg-clip-text text-transparent bg-gradient-to-r from-green-900 to-blue-900 tracking-tight
+          ${textTitle} font-extrabold leading-tight mb-10`}>{props.title}</p>
+    </div>
+    <p className={`${textBodyLg} font-bold my-5`}>{preview.body.join(" ")}</p>
+    <p className={`${textBodySm} my-5`}>{preview.subtitle}</p>
+    <div className={`flex flex-col ${textBodySm}`}>
       {preview.list.map(props.element)}
     </div>
   </>
@@ -30,10 +36,10 @@ function HeroTextContent(props: { title: string, element: (item) => JSX.Element 
 
 function HeroTextButton(props: { top: boolean, to: string }) {
   return <>
-    {props.top ? <div className="flex-row items-center flex mt-7 opacity-100">
+    {props.top ? <div className="flex-row items-center flex mt-9 opacity-100">
       <Link to={props.to}><ButtonArrow
         containerClassNames="mr-4"
-        classNames="mr-4 rounded-full py-2 px-5 hover:bg-gray-700 bg-gray-900 text-gray-50 text-2xl font-bold flex">About </ButtonArrow>
+        classNames={`mr-4 rounded-full py-2 px-5 hover:bg-gray-700 bg-gray-900 text-gray-50 font-bold flex ${textBodySm}`}>About </ButtonArrow>
       </Link>
     </div> : null}
   </>
@@ -42,9 +48,9 @@ function HeroTextButton(props: { top: boolean, to: string }) {
 function HeroText({ title, isTop }: HeroTypes & HeroTextTypes) {
   const aboutSlug = "/about"
   // rendered twice but only show buttons once
-  return <div className={"row-start-2 col-start-2 col-span-10 \
+  return <div className={"row-start-1 col-start-1 col-span-10 \
     sm:col-start-2 sm:col-span-6 \
-    lg:col-span-5 lg:col-start-3 relative " + (isTop ? "z-10" : "z-0")}>
+    lg:col-span-5 lg:col-start-2 relative " + (isTop ? "z-10" : "z-0")}>
     <div className={isTop ? "opacity-70" : ""}>
       <HeroTextContent title={title} element={item => <p className="">{item}</p>} />
     </div>
@@ -57,13 +63,13 @@ HeroText.defaultProps = { isTop: false }
 function HeroDisplay() {
   const image = preview.image
   return <div
-    className="relative col-span-4 col-start-8 row-end-3 sm:block hidden">
+    className="relative col-span-5 col-start-8 row-start-1 flex-col justify-end lg:justify-center sm:flex hidden">
     {image}
   </div>
 }
 
 export default function HeroIndex({ title }: HeroTypes) {
-  return <div className="w-full grid grid-cols-12 grid-rows-1 mt-20 gap-4 pb-10">
+  return <div className="w-full grid grid-cols-12 grid-rows-1 gap-2 mt-8 mb-16 sm:py-10 lg:mt-16 mx-5">
     <HeroText title={title} />
     <AngleGradient />
     <HeroText isTop title={title} />

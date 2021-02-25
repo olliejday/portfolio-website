@@ -25,8 +25,8 @@ function NavBarButton({ className, children, to }: { className: string, children
 NavBarButton.defaultProps = { className: "" }
 
 function NavBarMenu() {
-  return <div className="w-1/2 justify-around flex">
-    <NavBarButton to="/#devPreviews">Development</NavBarButton>
+  return <div className="w-1/2 justify-between sm:justify-around flex my-1">
+    {/*<NavBarButton to="/#devPreviews">Development</NavBarButton>*/}
     <NavBarButton to="/#uxPreviews">Design</NavBarButton>
     <NavBarButton to="/about">About</NavBarButton>
   </div>
@@ -34,10 +34,10 @@ function NavBarMenu() {
 
 export function Navbar({ title }: { title: string }) {
   return <div
-    className="flex flex-col items-center sm:flex-row relative z-20 h-10 justify-around w-full
+    className="flex flex-col items-center sm:flex-row relative z-20 justify-around w-full
     bg-opacity-50 bg-blue-600 text-gray-50">
     <div className="flex items-center">
-      <NavBarButton className="font-extrabold text-2xl" to="/">{title}</NavBarButton>
+      <NavBarButton className="font-extrabold text-2xl my-1" to="/">{title}</NavBarButton>
     </div>
     <NavBarMenu />
   </div>
