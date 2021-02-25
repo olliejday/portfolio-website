@@ -1,9 +1,6 @@
 import * as React from "react"
 import Seo from "../components/Seo"
 import Layout from "../components/Layout"
-import { graphql } from "gatsby"
-import { MDXRenderer } from "gatsby-plugin-mdx"
-import GatsbyImage from "gatsby-image"
 import about from "../assets/pages/about/aboutContents"
 
 const textSm = "text-4xl md:text-6xl lg:text-7xl"
@@ -52,7 +49,7 @@ function AboutSection({ data }: { data: any }) {
   const halfpage = image
   return <div className="w-screen p-10 box-border bg-gray-100">
     <div
-      className={`w-full box-border bg-${data.colour}-100 text-${data.colour}-900 overflow-hidden relative flex flex-row`}>
+      className={`w-full box-border ${data.colours} overflow-hidden relative flex flex-row`}>
       {/* Full page */}
       {timeline}
       {/* How much space for the title etc */}

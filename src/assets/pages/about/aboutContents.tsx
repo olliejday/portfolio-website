@@ -1,8 +1,6 @@
 import cv_dark from "../../cv/cv_design_dark.pdf"
 import cv_light from "../../cv/cv_design_light.pdf"
-import portrait_pic from "../../images/portrait_pic.png"
 import { graphql, StaticQuery } from "gatsby"
-import { Navbar } from "../../../components/Navbar"
 import * as React from "react"
 import GatsbyImage from "gatsby-image"
 
@@ -28,7 +26,7 @@ const about = [
     />,
     alt: "Close up of man",
     body: ["Oliver Day is a user experience designer and developer.", "Based in the UK."],
-    colour: "blue"
+    colours: "bg-blue-100 text-blue-900"
   },
   {
     timeline: [{
@@ -38,20 +36,20 @@ const about = [
     },
       { date: "2016", title: "Foundation Diploma in Art and Design", subtitle: "Arts University Bournemouth" }
     ],
-    colour: "red"
+    colours: "bg-red-100 text-red-900"
   }
   ,
   {
     subtitle: "Designing interactive experiences:",
     list: ["Artificial Intelligence", "Sustainability", "Humane tech."],
-    colour: "green"
+    colours: "bg-green-100 text-green-900"
   }
   ,
   {
     title: "Let's do some good...",
     cv: [["CV (light)", cv_light], ["CV (dark)", cv_dark]],
     email: ["olliejdaystorage1@gmail.com", "mailto:olliejdaystorage1@gmail.com"],
-    colour: "pink"
+    colours: "bg-pink-100 text-pink-900"
   }
 ]
 

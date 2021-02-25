@@ -5,11 +5,11 @@
 
 * Check hosted site
 * Index page responsive 
-    Set Double preview based off of updated single
+    Style Double preview based off of updated single
 
 * *__\*Can probs host at this points\*__*
 
-* Make iamges links
+* Make index images links
 * Add hinge clone and uncomment to add development back to nav bar
 * Article page improve styling - eg. colours
 * Scroll animations: about and index bit of movement up and/or fade in on images and text
