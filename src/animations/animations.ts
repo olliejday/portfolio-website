@@ -1,6 +1,8 @@
 import { gsap, Power1 } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
+gsap.registerPlugin(ScrollTrigger)
+
 export const fadeInLeft = (el) => (
   gsap.fromTo(el, {
     autoAlpha: 0.5,
