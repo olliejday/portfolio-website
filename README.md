@@ -5,13 +5,11 @@
 
 * Check hosted site x-browser and device
 
-* Add hinge clone and uncomment to add development back to nav bar
-* Article page improve styling - eg. colours
 * Scroll animations: about and index bit of movement up and/or fade in on images and text
   https://greensock.com/scrollmagic/
   see example scroll.tsx    
+* Article page improve styling - eg. colours
 * Page transition effects? See apple
-* See paper notes  
 * Colours
     * Unify x-site
     * Index page text and bg colours (same as about?)
@@ -19,7 +17,7 @@
     * About page too many colours?
 * Fonts
 * Favicons, metadata etc (don't want all from old portfolio but maybe some?)
-* 404 page
+* Add hinge clone and uncomment to add development back to nav bar
 
 ## Refs
 

@@ -46,11 +46,12 @@ const App = () => {
       }, {
         duration: 1,
         autoAlpha: 1,
-        y: -180,
+        y: -100,
         ease: Linear.easeNone,
         scrollTrigger: {
           id: `section-${index + 1}`,
           trigger: el,
+          markers: true,
           start: "top center+=100",
           toggleActions: "play none none reverse"
         }

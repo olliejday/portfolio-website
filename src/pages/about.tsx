@@ -1,59 +1,70 @@
 import * as React from "react"
+import { useEffect, useRef } from "react"
 import Seo from "../components/Seo"
 import Layout from "../components/Layout"
 import about from "../assets/pages/about/aboutContents"
+import { gsap, Linear } from "gsap"
+import {
+  AboutBody,
+  AboutImage,
+  AboutList,
+  AboutSubtitle,
+  AboutTitle,
+  Contact,
+  Timeline
+} from "../components/aboutComponents"
 
-const textSm = "text-4xl md:text-6xl lg:text-7xl"
-const textMd = "text-5xl md:text-7xl lg:text-8xl"
-const textLg = "text-6xl md:text-8xl lg:text-9xl "
 
-function Timeline({ data }: { data: [{ date: string, title: string, subtitle: string }] }) {
-  return <div className="flex flex-col justify-around">
-    {data.map(({ date, title, subtitle }, i) => (
-      <div
-        className={`${i % 2 === 0 ? "items-end text-right" : "items-start text-left"} justify-around flex flex-col m-10`}>
-        <p className={`${textSm}`}>{date}</p>
-        <p className={`${textMd} font-bold`}>{title}</p>
-        <p className={`${textSm}`}>{subtitle}</p>
-      </div>
-    ))}
-  </div>
-}
+function AboutSection({ data, index }: { data: any, index: number }) {
+  const revealRefs = useRef([])
+  revealRefs.current = []
+  const addToRefs = el => {
+    console.log(el, revealRefs.current.includes(el), revealRefs.current)
+    if (el && !revealRefs.current.includes(el)) {
+      revealRefs.current.push(el)
+    }
+  }
 
-function AboutList({ data }: { data: [string] }) {
-  return <div className="flex flex-col justify-end m-10">
-    {data.map(item => <p className={`${textMd} font-bold my-5`}>{item}</p>)}
-  </div>
-}
+  useEffect(() => {
+    revealRefs.current.forEach((el, index) => {
+      console.log("useEffect on", el)
+      gsap.fromTo(el, {
+        autoAlpha: 0
+      }, {
+        duration: 1,
+        autoAlpha: 1,
+        y: -10,
+        ease: Linear.easeNone,
+        scrollTrigger: {
+          id: `section-${index + 1}`,
+          trigger: el,
+          start: "top center+=100",
+          markers: true,
+          toggleActions: "play none none reverse"
+        }
+      })
+    })
+  }, [])
 
-function Contact({ cv, email }: { cv: [[string, string]], email: [string, string] }) {
-  const [emailText, link] = email
-  return <div className="flex flex-col justify-around">
-    <div className="my-10">
-      {cv.map(([title, file], i) => <a className={`${textMd} hover:underline`} href={file}>{title} {i < cv.length - 1 ? "/ " : ""}</a>)}
-    </div>
-    {<a className={`${textSm} break-all my-10 hover:underline`} href={link}>{emailText}</a>}
-  </div>
-}
 
-function AboutSection({ data }: { data: any }) {
-  const title = data.hasOwnProperty("title") ? <p className={`${textLg} font-bold mb-6`}>{data.title}</p> : null
-  const subtitle = data.hasOwnProperty("subtitle") ? <p className={`${textMd} font-bold m-5`}>{data.subtitle}</p> : null
-  const body = data.hasOwnProperty("body") ? data.body.map(b => <p
-    className={`${textMd} font-bold my-10`}>{b}</p>) : null
+  const title = data.hasOwnProperty("title") ? <AboutTitle title={data.title} /> : null
+  const subtitle = data.hasOwnProperty("subtitle") ?
+    <AboutSubtitle subtitle={data.subtitle} /> : null
+  const body = data.hasOwnProperty("body") ? <AboutBody data={data} /> : null
   const contact = data.hasOwnProperty("cv") ? <Contact cv={data.cv} email={data.email} /> : null
-  const image = data.hasOwnProperty("image") ? <div className="w-1/3 absolute 2xl:top-0 bottom-10 right-1">{data.image}</div> : null
-  const timeline = data.hasOwnProperty("timeline") ? <Timeline data={data.timeline} /> : null
+  const image = data.hasOwnProperty("image") ? <AboutImage image={data.image} /> : null
+  const timeline = data.hasOwnProperty("timeline") ? <Timeline data={data.timeline} addToRefs={addToRefs} /> : null
   const aboutList = data.hasOwnProperty("list") ? <AboutList data={data.list} /> : null
   const fullpage = timeline || aboutList
-  const halfpage = image
+  const halfpage = image !== null
   return <div className="w-screen p-10 box-border bg-gray-100">
     <div
       className={`w-full box-border ${data.colours} overflow-hidden relative flex flex-row`}>
       {/* Full page */}
       {timeline}
       {/* How much space for the title etc */}
-      <div className={ fullpage ? "" : halfpage ? `w-2/3 relative z-10 flex flex-col p-10` : `w-full relative z-10 flex flex-col p-10`}>
+      <div
+        className={fullpage ? "" : halfpage ? `w-2/3 relative z-10 flex flex-col p-10` : `w-full relative z-10 flex flex-col p-10`}>
         {title}
         {subtitle}
         {body}
@@ -68,15 +79,11 @@ function AboutSection({ data }: { data: any }) {
 }
 
 export default function AboutPage() {
-  console.log("about", about)
   return (
     <Layout>
       <Seo title="About" />
       <div className="flex flex-col items-center justify-around">
-        <AboutSection data={about[0]} />
-        <AboutSection data={about[1]} />
-        <AboutSection data={about[2]} />
-        <AboutSection data={about[3]} />
+        {about.map((data, i) => <AboutSection key={i} data={data} index={i} />)}
       </div>
     </Layout>
   )
