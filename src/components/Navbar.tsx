@@ -9,7 +9,7 @@ function NavBarButton({ className, children, to }: { className: string, children
               const [toPage, toSection] = to.split("#")
               // if already on index page and want index page
               if (window.location.pathname === "/" && toPage === "/") {
-                scrollTo(to.substring(1))
+                if (to !== "/") scrollTo(to.substring(1))
               }
               else{
                 // go to page

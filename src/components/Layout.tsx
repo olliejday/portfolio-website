@@ -4,7 +4,7 @@ import { graphql, StaticQuery } from "gatsby"
 
 export default function Layout({ children }) {
   return (
-    <div className="w-full overflow-x-hidden">
+    <div className="relative w-full overflow-x-hidden">
       <StaticQuery
         query={graphql`
         query {

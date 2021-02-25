@@ -1,75 +1,90 @@
-import { gsap, Linear } from "gsap"
+import { gsap, Power1 } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 export const fadeInLeft = (el) => (
   gsap.fromTo(el, {
-    autoAlpha: 0,
+    autoAlpha: 0.5,
     x: 100
   }, {
-    duration: 1,
     autoAlpha: 1,
     x: 0,
-    ease: Linear.easeNone,
+    ease: Power1.easeInOut,
     scrollTrigger: {
       trigger: el,
-      start: "top center+=100",
-      markers: true,
+      start: "top bottom",
+      end: "center center",
+      scrub: true,
       toggleActions: "play none none reverse"
     }
   })
 )
 
-export const fadeInRight = (el, index) => (
+export const fadeInRight = (el) => (
   gsap.fromTo(el, {
-    autoAlpha: 0,
+    autoAlpha: 0.5,
     x: -100
   }, {
-    duration: 1,
     autoAlpha: 1,
     x: 0,
-    ease: Linear.easeNone,
+    ease: Power1.easeInOut,
     scrollTrigger: {
-      id: `section-${index + 1}`,
       trigger: el,
-      start: "center center",
-      markers: true,
+      start: "top bottom",
+      end: "center center",
+      scrub: true,
       toggleActions: "play none none reverse"
     }
   })
 )
 
-export const fadeInUp = (el, index) => (
+export const fadeInUp = (el) => {
   gsap.fromTo(el, {
     autoAlpha: 0,
     y: 50
   }, {
-    duration: 1,
     autoAlpha: 1,
     y: 0,
-    ease: Linear.easeNone,
+    ease: Power1.easeInOut,
     scrollTrigger: {
-      id: `section-${index + 1}`,
       trigger: el,
-      start: "center center",
-      markers: true,
+      start: "top 95%",
+      end: "bottom 90%",
+      scrub: true,
       toggleActions: "play none none reverse"
     }
   })
-)
+}
 
-export const slowScrollScale = (el, index) => (
+export const fadeOutUp = (el) => {
   gsap.fromTo(el, {
-    autoAlpha: 0,
-  }, {
-    duration: 1,
     autoAlpha: 1,
-    y: 50,
-    ease: Linear.easeNone,
+    y: 0
+  }, {
+    autoAlpha: 0,
+    y: -50,
+    ease: Power1.easeInOut,
     scrollTrigger: {
-      id: `section-${index + 1}`,
       trigger: el,
-      start: "center center",
-      markers: true,
+      start: "top 5%",
+      end: "bottom 7%",
+      scrub: true,
+      toggleActions: "play none none reverse"
+    }
+  })
+
+}
+
+export const slowScrollScale = (el) => (
+  gsap.fromTo(el, {
+    y: 100
+  }, {
+    y: -100,
+    ease: Power1.easeInOut,
+    scrollTrigger: {
+      trigger: el,
+      start: "top 100%",
+      end: "bottom 0%",
+      scrub: true,
       toggleActions: "play none none reverse"
     }
   })
@@ -80,7 +95,7 @@ export const pinSection = (el) => (
     trigger: el,
     start: "center center",
     end: "+=500",
-    markers: true,
+    scrub: true,
     pin: true
   })
 )

@@ -10,7 +10,7 @@ export default function AboutPage() {
     <Layout>
       <Seo title="About" />
       <div className="flex flex-col items-center justify-around">
-        {about.map((data, i) => <AboutSection key={i} data={data} index={i} />)}
+        {about.map((data, i) => <AboutSection key={i} data={data} />)}
       </div>
     </Layout>
   )

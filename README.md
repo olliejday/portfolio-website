@@ -5,9 +5,9 @@
 
 * Check hosted site x-browser and device
 
-* Scroll animations: about and index bit of movement up and/or fade in on images and text
-  https://greensock.com/scrollmagic/
-  see example scroll.tsx    
+* Work on scroll animations
+    Test on mobile
+    Add some v subtle parallax on index page
 * Article page improve styling - eg. colours
 * Page transition effects? See apple
 * Colours
