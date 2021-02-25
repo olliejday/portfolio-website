@@ -3,6 +3,7 @@
 
 ## TODO
 
+* Check hosted site
 * Index page responsive 
     Set Double preview based off of updated single
 
