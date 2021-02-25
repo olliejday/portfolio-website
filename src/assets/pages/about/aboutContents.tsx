@@ -46,7 +46,7 @@ const about = [
   }
   ,
   {
-    title: "Let's do some good...",
+    subtitle: "Let's do some good...",
     cv: [["CV (light)", cv_light], ["CV (dark)", cv_dark]],
     email: ["olliejdaystorage1@gmail.com", "mailto:olliejdaystorage1@gmail.com"],
     colours: "bg-pink-100 text-pink-900"

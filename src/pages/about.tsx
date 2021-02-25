@@ -30,9 +30,9 @@ function Contact({ cv, email }: { cv: [[string, string]], email: [string, string
   const [emailText, link] = email
   return <div className="flex flex-col justify-around">
     <div className="my-10">
-      {cv.map(([title, file], i) => <a className={`${textMd}`} href={file}>{title} {i < cv.length - 1 ? "/ " : ""}</a>)}
+      {cv.map(([title, file], i) => <a className={`${textMd} hover:underline`} href={file}>{title} {i < cv.length - 1 ? "/ " : ""}</a>)}
     </div>
-    {<a className={`${textSm} break-all my-10`} href={link}>{emailText}</a>}
+    {<a className={`${textSm} break-all my-10 hover:underline`} href={link}>{emailText}</a>}
   </div>
 }
 

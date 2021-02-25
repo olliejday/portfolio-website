@@ -4,13 +4,11 @@
 ## TODO
 
 * Check hosted site
-* Make links underline on hover eg. cv / email on about page  
 * Index page responsive 
     Style Double preview based off of updated single
 
 * *__\*Can probs host at this points\*__*
 
-* Make index images links
 * Add hinge clone and uncomment to add development back to nav bar
 * Article page improve styling - eg. colours
 * Scroll animations: about and index bit of movement up and/or fade in on images and text

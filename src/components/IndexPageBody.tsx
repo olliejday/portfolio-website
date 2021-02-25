@@ -17,6 +17,7 @@ function PreviewText({ data }) {
 
 function FullWidthPreview({ node, bgColour, imageLeft }) {
   const data = node.childMdx
+  const slug = data.fields.slug
   return <div className={`${bgColour}`}>
     <div
       className={"w-full mx-auto px-10 lg:px-28 py-8 box-border grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 grid-flow-row-dense md:gap-16"}>
@@ -27,7 +28,7 @@ function FullWidthPreview({ node, bgColour, imageLeft }) {
       </div>
       <div
         className={`relative overflow-hidden w-full h-full row-start-2 lg:row-start-1 ${imageLeft ? "lg:col-start-1" : "lg:col-start-2"}`}>
-        <PreviewImage data={data} />
+        <PreviewImage data={data} to={slug} />
       </div>
     </div>
   </div>
@@ -36,24 +37,25 @@ function FullWidthPreview({ node, bgColour, imageLeft }) {
 
 FullWidthPreview.defaultProps = { imageLeft: false }
 
-function PreviewImage({ data }) {
-  return <div className="absolute top-0 w-full h-full">
+function PreviewImage({ data, to }) {
+  return <Link className="absolute top-0 w-full h-full" to={to}>
     <GatsbyImage fluid={data.frontmatter.image.childImageSharp.fluid}
                  imgStyle={{ objectFit: "cover", pointerEvents: "none" }}
                  alt="Preview of design"
     />
-  </div>
+  </Link>
 }
 
 function HalfWidthPreview({ node }) {
   const data = node.childMdx
+  const slug = data.fields.slug
   return <div
     className="flex h-full justify-around flex-1 flex-col items-center text-center mx-6 my-5 overflow-y-hidden">
     <div className="flex flex-col justify-end">
       <PreviewText data={data} />
     </div>
     <div className="w-full h-2/3 my-8 lg:mx-5 lg:my-0 box-border">
-      <PreviewImage data={data} />
+      <PreviewImage data={data} to={slug} />
     </div>
   </div>
 }
