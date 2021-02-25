@@ -4,10 +4,12 @@ const textSm = "text-4xl md:text-6xl lg:text-7xl"
 const textMd = "text-5xl md:text-7xl lg:text-8xl"
 const textLg = "text-6xl md:text-8xl lg:text-9xl "
 
-export function Timeline({ data, addToRefs }: { data: [{ date: string, title: string, subtitle: string }], addToRefs: (el) => void }) {
+export function Timeline({ data, addToRefsLeft, addToRefsRight }: { data: [{ date: string, title: string, subtitle: string }],
+  addToRefsLeft: (el) => void, addToRefsRight: (el) => void }) {
+  // evens are on the right, odds are on the left
   return <div className="flex flex-col justify-around">
     {data.map(({ date, title, subtitle }, i) => (
-      <div key={i}  ref={addToRefs}
+      <div key={i}  ref={i % 2 === 0 ? addToRefsLeft : addToRefsRight}
         className={`${i % 2 === 0 ? "items-end text-right" : "items-start text-left"} justify-around flex flex-col m-10`}>
         <p className={`${textSm}`}>{date}</p>
         <p className={`${textMd} font-bold`}>{title}</p>
@@ -17,9 +19,9 @@ export function Timeline({ data, addToRefs }: { data: [{ date: string, title: st
   </div>
 }
 
-export function AboutList({ data }: { data: [string] }) {
+export function AboutList({ data, addToRefs }: { data: [string], addToRefs: (el) => void }) {
   return <div className="flex flex-col justify-end m-10">
-    {data.map((item, i) => <p key={i} className={`${textMd} font-bold my-5`}>{item}</p>)}
+    {data.map((item, i) => <p key={i} ref={addToRefs} className={`${textMd} font-bold my-5`}>{item}</p>)}
   </div>
 }
 
