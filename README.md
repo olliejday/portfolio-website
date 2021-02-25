@@ -3,11 +3,7 @@
 
 ## TODO
 
-* Check hosted site
-* Index page responsive 
-    Style Double preview based off of updated single
-
-* *__\*Can probs host at this points\*__*
+* Check hosted site x-browser and device
 
 * Add hinge clone and uncomment to add development back to nav bar
 * Article page improve styling - eg. colours

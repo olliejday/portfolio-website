@@ -20,9 +20,9 @@ function FullWidthPreview({ node, bgColour, imageLeft }) {
   const slug = data.fields.slug
   return <div className={`${bgColour}`}>
     <div
-      className={"w-full mx-auto px-10 lg:px-28 py-8 box-border grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 grid-flow-row-dense md:gap-16"}>
+      className={"w-full mx-auto px-10 lg:px-28 py-8 box-border grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 grid-flow-row-dense gap-16"}>
       <div
-        className={`flex flex-col justify-end mx-5 lg:pt-28 pt-10 pb-16 row-start-1 ${imageLeft ? "lg:col-start-2" : "lg:col-start-1"}`}
+        className={`flex flex-col justify-start lg:justify-end mx-5 lg:pt-28 lg:pb-16 row-start-1 ${imageLeft ? "lg:col-start-2" : "lg:col-start-1"}`}
       style={{minHeight: "24rem"}}>
         <PreviewText data={data} />
       </div>
@@ -46,25 +46,25 @@ function PreviewImage({ data, to }) {
   </Link>
 }
 
-function HalfWidthPreview({ node }) {
+function HalfWidthPreview({ node, bgColour }) {
   const data = node.childMdx
   const slug = data.fields.slug
   return <div
-    className="flex h-full justify-around flex-1 flex-col items-center text-center mx-6 my-5 overflow-y-hidden">
-    <div className="flex flex-col justify-end">
+    className={`w-full px-10 md:mx-5 py-6 my-5 box-border grid grid-rows-2 gap-16 ${bgColour}`}>
+    <div className="flex flex-col justify-start lg:pb-16">
       <PreviewText data={data} />
     </div>
-    <div className="w-full h-2/3 my-8 lg:mx-5 lg:my-0 box-border">
+    <div className={`relative overflow-hidden w-full h-full row-start-2`}>
       <PreviewImage data={data} to={slug} />
     </div>
   </div>
 }
 
-function DoublePreview({ nodeLeft, nodeRight, bgColour }) {
-  return <div className={`h-80vh overflow-y-hidden ${bgColour}`}>
-    <div className={"w-full md:mx-auto h-full py-10 flex flex-col sm:flex-row"}>
-      <HalfWidthPreview node={nodeLeft} />
-      <HalfWidthPreview node={nodeRight} />
+function DoublePreview({ nodeLeft, nodeRight, bgColourLeft, bgColourRight }) {
+  return <div className={`overflow-hidden`}>
+    <div className={"w-full md:py-5 px-5 flex flex-col md:flex-row"}>
+      <HalfWidthPreview node={nodeLeft} bgColour={bgColourLeft} />
+      <HalfWidthPreview node={nodeRight} bgColour={bgColourRight}  />
     </div>
   </div>
 }
@@ -78,11 +78,12 @@ export function IndexPageBody({ data }: any) {
   for (let i = 0; i < uxEdges.length; i += 3) {
     // every third is a full
     // then two as a double
+
     uxPreviews.push(<FullWidthPreview key={"ux" + i} node={uxEdges[i].node} bgColour="bg-gray-200"
                                       imageLeft={(i / 3) % 2 === 0} />)
     if (i + 2 < uxEdges.length) uxPreviews.push(<DoublePreview key={"ux" + i + 1} nodeLeft={uxEdges[i + 1].node}
                                                                nodeRight={uxEdges[i + 2].node}
-                                                               bgColour={"bg-gray-100"} />)
+                                                               bgColourLeft={"bg-gray-100"} bgColourRight={"bg-gray-200"} />)
     else if (i + 1 < uxEdges.length) uxPreviews.push(<FullWidthPreview key={"ux" + i + 1} node={uxEdges[i + 1].node}
                                                                        bgColour="bg-gray-100"
                                                                        imageLeft={(i / 3) % 2 !== 0} />)
@@ -96,7 +97,7 @@ export function IndexPageBody({ data }: any) {
                                        imageLeft={(i / 3) % 2 === 0} />)
     if (i + 2 < devEdges.length) devPreviews.push(<DoublePreview key={"ux" + i + 1} nodeLeft={devEdges[i + 1].node}
                                                                  nodeRight={devEdges[i + 2].node}
-                                                                 bgColour={"bg-gray-100"} />)
+                                                                 bgColourLeft={"bg-gray-100"} bgColourRight={"bg-gray-200"} />)
     else if (i + 1 < devEdges.length) devPreviews.push(<FullWidthPreview key={"ux" + i + 1} node={devEdges[i + 1].node}
                                                                          bgColour="bg-gray-100"
                                                                          imageLeft={(i / 3) % 2 !== 0} />)
