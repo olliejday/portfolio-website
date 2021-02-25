@@ -72,7 +72,7 @@ export function AboutSection({ data }: { data: any }) {
     if (!fullpage) addToRefs(fadeOutUpRefs)(el)
   }} /> : null
 
-  return <div className="w-screen p-10 box-border bg-gray-100" ref={fullpage ? pinRef : null}>
+  return <div className="w-screen p-10 box-border bg-gray-100" ref={pinRef}>
     <div
       className={`w-full box-border ${data.colours} overflow-hidden relative flex flex-row`}>
       {/* Full page */}

@@ -5,6 +5,7 @@
 
 * Check hosted site x-browser and device
 
+* Fix scroll pinning
 * Work on scroll animations
     Test on mobile
     Add some v subtle parallax on index page

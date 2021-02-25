@@ -96,8 +96,9 @@ export const pinSection = (el) => (
   ScrollTrigger.create({
     trigger: el,
     start: "center center",
-    end: "+=500",
+    end: "+=50%",
     scrub: true,
-    pin: true
+    pin: true,
+    pinSpacing: "margin"
   })
 )
