@@ -42,7 +42,7 @@ function AboutSection({ data }: { data: any }) {
   const body = data.hasOwnProperty("body") ? data.body.map(b => <p
     className={`${textMd} font-bold my-10`}>{b}</p>) : null
   const contact = data.hasOwnProperty("cv") ? <Contact cv={data.cv} email={data.email} /> : null
-  const image = data.hasOwnProperty("image") ? <div className="w-1/3 absolute bottom-10 right-1">{data.image}</div> : null
+  const image = data.hasOwnProperty("image") ? <div className="w-1/3 absolute 2xl:top-0 bottom-10 right-1">{data.image}</div> : null
   const timeline = data.hasOwnProperty("timeline") ? <Timeline data={data.timeline} /> : null
   const aboutList = data.hasOwnProperty("list") ? <AboutList data={data.list} /> : null
   const fullpage = timeline || aboutList

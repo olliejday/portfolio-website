@@ -4,6 +4,7 @@
 ## TODO
 
 * Check hosted site
+* Make links underline on hover eg. cv / email on about page  
 * Index page responsive 
     Style Double preview based off of updated single
 
