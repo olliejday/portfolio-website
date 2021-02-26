@@ -4,14 +4,17 @@ import { IndexPageBody } from "../components/IndexPageBody"
 import Layout from "../components/Layout"
 import HeroIndex from "../components/HeroIndex"
 import { graphql } from "gatsby"
+import globalColours from "../styles/globalColours"
 
 
 export default function IndexPage({ data }) {
   return (
     <Layout>
       <Seo title={data.site.siteMetadata.title} />
+      <div className={globalColours.bgBlack}>
         <HeroIndex title={data.site.siteMetadata.title} />
         <IndexPageBody data={data} />
+      </div>
     </Layout>
   )
 }

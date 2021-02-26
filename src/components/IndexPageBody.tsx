@@ -1,30 +1,33 @@
 import * as React from "react"
 import GatsbyImage from "gatsby-image"
 import { Link } from "gatsby"
+import globalColours from "../styles/globalColours"
 
 const textLg = "xl:text-8xl text-7xl"
 const textMd = "xl:text-5xl text-4xl"
 
-function PreviewText({ data }) {
+function PreviewText({ data, textColour }) {
   return <>
-    <Link to={data.fields.slug}><p className={`${textLg} my-5 text-gray-700 font-bold font-display`}>{data.frontmatter.title}</p>
+    <Link to={data.fields.slug}><p
+      className={`${textLg} ${textColour} my-5 font-bold font-display`}>{data.frontmatter.title}</p>
     </Link>
     <Link to={data.fields.slug}><p
-      className={`${textMd} mt-5 text-gray-600 font-semibold font-display`}>{data.frontmatter.subtitle}</p>
+      className={`${textMd} ${globalColours.textLight} text-opacity-80 mt-5 font-semibold font-display`}>{data.frontmatter.subtitle}</p>
     </Link>
   </>
 }
 
-function FullWidthPreview({ node, bgColour, imageLeft }) {
+function FullWidthPreview({ node, bgColour, textColour, imageLeft }) {
   const data = node.childMdx
   const slug = data.fields.slug
-  return <div className={`${bgColour}`}>
+  return <div className={`px-10 pb-10`}>
     <div
-      className={"w-full mx-auto px-10 lg:px-28 py-8 box-border grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 grid-flow-row-dense gap-16"}>
+      className={`${bgColour} w-full mx-auto px-10 lg:px-28 py-8 box-border grid ` +
+      `grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 grid-flow-row-dense gap-16`}>
       <div
         className={`flex flex-col justify-start lg:justify-end mx-5 lg:pt-28 lg:pb-16 row-start-1 ${imageLeft ? "lg:col-start-2" : "lg:col-start-1"}`}
-      style={{minHeight: "24rem"}}>
-        <PreviewText data={data} />
+        style={{ minHeight: "24rem" }}>
+        <PreviewText data={data} textColour={textColour} />
       </div>
       <div
         className={`relative overflow-hidden w-full h-full row-start-2 lg:row-start-1 ${imageLeft ? "lg:col-start-1" : "lg:col-start-2"}`}>
@@ -46,13 +49,13 @@ function PreviewImage({ data, to }) {
   </Link>
 }
 
-function HalfWidthPreview({ node, bgColour }) {
+function HalfWidthPreview({ node, bgColour, textColour }) {
   const data = node.childMdx
   const slug = data.fields.slug
   return <div
-    className={`w-full px-10 md:mx-5 py-6 my-5 box-border grid grid-rows-2 gap-16 ${bgColour}`}>
+    className={`w-full px-10 lg:mx-5 py-6 my-5 box-border grid grid-rows-2 gap-16 ${bgColour}`}>
     <div className="flex flex-col justify-start lg:pb-16">
-      <PreviewText data={data} />
+      <PreviewText data={data} textColour={textColour} />
     </div>
     <div className={`relative overflow-hidden w-full h-full row-start-2`}>
       <PreviewImage data={data} to={slug} />
@@ -60,11 +63,15 @@ function HalfWidthPreview({ node, bgColour }) {
   </div>
 }
 
-function DoublePreview({ nodeLeft, nodeRight, bgColourLeft, bgColourRight }) {
-  return <div className={`overflow-hidden`}>
-    <div className={"w-full md:py-5 px-5 flex flex-col md:flex-row"}>
-      <HalfWidthPreview node={nodeLeft} bgColour={bgColourLeft} />
-      <HalfWidthPreview node={nodeRight} bgColour={bgColourRight}  />
+function DoublePreview({
+                         nodeLeft, nodeRight,
+                         bgColourLeft, bgColourRight,
+                         textColourLeft, textColourRight
+                       }) {
+  return <div className={`overflow-hidden px-10 pb-10`}>
+    <div className={"w-full flex flex-col lg:flex-row"}>
+      <HalfWidthPreview node={nodeLeft} bgColour={bgColourLeft} textColour={textColourLeft} />
+      <HalfWidthPreview node={nodeRight} bgColour={bgColourRight} textColour={textColourRight} />
     </div>
   </div>
 }
@@ -78,28 +85,37 @@ export function IndexPageBody({ data }: any) {
   for (let i = 0; i < uxEdges.length; i += 3) {
     // every third is a full
     // then two as a double
-
-    uxPreviews.push(<FullWidthPreview key={"ux" + i} node={uxEdges[i].node} bgColour="bg-gray-200"
+    uxPreviews.push(<FullWidthPreview key={"ux" + i} node={uxEdges[i].node} bgColour={globalColours.bgBlack}
+                                      textColour={globalColours.textLightest}
                                       imageLeft={(i / 3) % 2 === 0} />)
     if (i + 2 < uxEdges.length) uxPreviews.push(<DoublePreview key={"ux" + i + 1} nodeLeft={uxEdges[i + 1].node}
                                                                nodeRight={uxEdges[i + 2].node}
-                                                               bgColourLeft={"bg-gray-100"} bgColourRight={"bg-gray-200"} />)
+                                                               bgColourLeft={globalColours.bgBlack}
+                                                               bgColourRight={globalColours.bgBlack}
+                                                               textColourLeft={globalColours.textLightest}
+                                                               textColourRight={globalColours.textLight} />)
+
     else if (i + 1 < uxEdges.length) uxPreviews.push(<FullWidthPreview key={"ux" + i + 1} node={uxEdges[i + 1].node}
-                                                                       bgColour="bg-gray-100"
+                                                                       bgColour={globalColours.bgBlack}
+                                                                       textColour={globalColours.textLight}
                                                                        imageLeft={(i / 3) % 2 !== 0} />)
   }
 
   for (let i = 0; i < devEdges.length; i += 3) {
     // every third is a full
     // then two as a double
-
-    devPreviews.push(<FullWidthPreview key={"ux" + i} node={devEdges[i].node} bgColour="bg-gray-200"
+    devPreviews.push(<FullWidthPreview key={"ux" + i} node={devEdges[i].node} bgColour={globalColours.bgBlack}
+                                       textColour={globalColours.textLightest}
                                        imageLeft={(i / 3) % 2 === 0} />)
     if (i + 2 < devEdges.length) devPreviews.push(<DoublePreview key={"ux" + i + 1} nodeLeft={devEdges[i + 1].node}
                                                                  nodeRight={devEdges[i + 2].node}
-                                                                 bgColourLeft={"bg-gray-100"} bgColourRight={"bg-gray-200"} />)
+                                                                 bgColourLeft={globalColours.bgBlack}
+                                                                 bgColourRight={globalColours.bgBlack}
+                                                                 textColourLeft={globalColours.textLightest}
+                                                                 textColourRight={globalColours.textLight} />)
     else if (i + 1 < devEdges.length) devPreviews.push(<FullWidthPreview key={"ux" + i + 1} node={devEdges[i + 1].node}
-                                                                         bgColour="bg-gray-100"
+                                                                         bgColour={globalColours.bgBlack}
+                                                                         textColour={globalColours.textLight}
                                                                          imageLeft={(i / 3) % 2 !== 0} />)
   }
   return <div>

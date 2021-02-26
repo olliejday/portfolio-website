@@ -35,7 +35,7 @@ export function Contact({
                           animationRef
                         }: { cv: [[string, string]], email: [string, string], animationRef: (el) => void }) {
   const [emailText, link] = email
-  return <div className="flex flex-col justify-around">
+  return <div className="mx-10 flex flex-col justify-around">
     <div className="my-10">
       {cv.map(([title, file], i) => <a key={i} className={`${textMd} hover:underline font-medium`} ref={animationRef}
                                        href={file}>{title} {i < cv.length - 1 ? "/ " : ""}</a>)}

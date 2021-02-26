@@ -32,6 +32,10 @@
     margin: 0; /* Remove margins */
 }
 
+.table-of-contents > ul > li > a {
+    @apply text-gray-700;
+}
+
 /* This breaks on slightly larger screens than 600px used generally elsewhere */
 @media only screen and (min-width: 1536px) {
     .table-of-contents {

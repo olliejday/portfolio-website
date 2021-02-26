@@ -2,6 +2,7 @@ import * as React from "react"
 import { AboutBody, AboutImage, AboutList, AboutSubtitle, AboutTitle, Contact, Timeline } from "./aboutComponents"
 import { fadeInLeft, fadeInRight, fadeInUp, fadeOutUp, pinSection, slowScrollScale } from "../animations/animations"
 import { useEffect, useRef } from "react"
+import globalColours from "../styles/globalColours"
 
 
 export function AboutSection({ data }: { data: any }) {
@@ -72,10 +73,10 @@ export function AboutSection({ data }: { data: any }) {
     if (!fullpage) addToRefs(fadeOutUpRefs)(el)
   }} /> : null
 
-  return <div className="w-screen p-10 box-border bg-gray-100" ref={pinRef}>
+  return <div className="w-screen p-10 box-border" ref={pinRef}>
     <div
       // TODO : className={`w-full box-border ${data.colours} overflow-hidden relative flex flex-row`}>
-      className={`w-full box-border font-display text-gray-100 bg-gray-800 overflow-hidden relative flex flex-row`}>
+      className={`w-full box-border font-display ${globalColours.textLightest} ${globalColours.bgBlack} overflow-hidden relative flex flex-row`}>
       {/* Full page */}
       {timeline}
       {/* How much space for the title etc */}

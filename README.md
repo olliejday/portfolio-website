@@ -5,11 +5,10 @@
 
 
 * Index page gradient change
-* Top about page scroll animations could be better
+* Top about page scroll animations could be better on mobile
 * Add some v subtle parallax on index page
-* Font size mobile about  
+* Font size mobile about page 
 * Article page improve styling - eg. colours
-* Page transition effects? See apple
 * Colours
     * Unify x-site
     * Index page text and bg colours (same as about?)
