@@ -74,7 +74,8 @@ export function AboutSection({ data }: { data: any }) {
 
   return <div className="w-screen p-10 box-border bg-gray-100" ref={pinRef}>
     <div
-      className={`w-full box-border ${data.colours} overflow-hidden relative flex flex-row`}>
+      // TODO : className={`w-full box-border ${data.colours} overflow-hidden relative flex flex-row`}>
+      className={`w-full box-border font-display text-gray-100 bg-gray-800 overflow-hidden relative flex flex-row`}>
       {/* Full page */}
       {timeline}
       {/* How much space for the title etc */}

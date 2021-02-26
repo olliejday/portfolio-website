@@ -3,8 +3,8 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
-      "sans": ["Inter\\ Var", "Inter", "sans-serif"],
-      "mono": ["ui-monospace", "SFMono-Regular", "monospace"]
+      "display": ["Syne", "sans-serif"],
+      "sans": ["Inter", "sans-serif"],
     },
     extend: {
       inset: {

@@ -15,9 +15,9 @@ export function Timeline({ data, animationRefLeft, animationRefRight }:
     {data.map(({ date, title, subtitle }, i) => (
       <div key={i} ref={i % 2 === 0 ? animationRefLeft : animationRefRight}
            className={`${i % 2 === 0 ? "items-end text-right" : "items-start text-left"} justify-around flex flex-col m-10`}>
-        <p className={`${textSm}`}>{date}</p>
+        <p className={`${textSm} font-medium`}>{date}</p>
         <p className={`${textMd} font-bold`}>{title}</p>
-        <p className={`${textSm}`}>{subtitle}</p>
+        <p className={`${textSm} font-medium`}>{subtitle}</p>
       </div>
     ))}
   </div>
@@ -37,10 +37,10 @@ export function Contact({
   const [emailText, link] = email
   return <div className="flex flex-col justify-around">
     <div className="my-10">
-      {cv.map(([title, file], i) => <a key={i} className={`${textMd} hover:underline`} ref={animationRef}
+      {cv.map(([title, file], i) => <a key={i} className={`${textMd} hover:underline font-medium`} ref={animationRef}
                                        href={file}>{title} {i < cv.length - 1 ? "/ " : ""}</a>)}
     </div>
-    {<a className={`${textSm} break-all my-10 hover:underline`} href={link} ref={animationRef}>{emailText}</a>}
+    {<a className={`${textSm} break-all my-10 hover:underline font-medium`} href={link} ref={animationRef}>{emailText}</a>}
   </div>
 }
 

@@ -4,7 +4,7 @@ import scrollTo from "gatsby-plugin-smoothscroll"
 
 function NavBarButton({ className, children, to }: { className: string, children: string, to: string }) {
   return <div className={"h-full flex flex-col justify-center items-center group mx-3"}>
-    <button className={className ? className : "font-bold whitespace-nowrap"}
+    <button className={className ? className : " text-xl font-semibold whitespace-nowrap"}
             onClick={() => {
               const [toPage, toSection] = to.split("#")
               // if already on index page and want index page
@@ -35,9 +35,9 @@ function NavBarMenu() {
 export function Navbar({ title }: { title: string }) {
   return <div
     className="flex flex-col items-center sm:flex-row relative z-20 justify-around w-full
-    bg-opacity-50 bg-blue-600 text-gray-50">
+    bg-gray-600 text-gray-50">
     <div className="flex items-center">
-      <NavBarButton className="font-extrabold text-2xl my-1" to="/">{title}</NavBarButton>
+      <NavBarButton className="font-bold font-display text-2xl my-1" to="/">{title}</NavBarButton>
     </div>
     <NavBarMenu />
   </div>

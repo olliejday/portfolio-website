@@ -2,15 +2,15 @@ import * as React from "react"
 import GatsbyImage from "gatsby-image"
 import { Link } from "gatsby"
 
-const textLg = "text-7xl"
-const textMd = "text-4xl"
+const textLg = "xl:text-8xl text-7xl"
+const textMd = "xl:text-5xl text-4xl"
 
 function PreviewText({ data }) {
   return <>
-    <Link to={data.fields.slug}><p className={`${textLg} my-5 text-gray-700 font-bold`}>{data.frontmatter.title}</p>
+    <Link to={data.fields.slug}><p className={`${textLg} my-5 text-gray-700 font-bold font-display`}>{data.frontmatter.title}</p>
     </Link>
     <Link to={data.fields.slug}><p
-      className={`${textMd} mt-5 text-gray-600 font-bold`}>{data.frontmatter.subtitle}</p>
+      className={`${textMd} mt-5 text-gray-600 font-semibold font-display`}>{data.frontmatter.subtitle}</p>
     </Link>
   </>
 }
