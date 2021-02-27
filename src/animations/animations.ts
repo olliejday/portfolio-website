@@ -39,27 +39,31 @@ export const fadeInRight = (el) => (
   })
 )
 
-export const fadeInUp = (el) => {
+export const dropInDown = (el) => {
   gsap.fromTo(el, {
-    yPercent: 150
+    yPercent: -200,
+    autoAlpha: 0,
   }, {
     yPercent: 0,
+    autoAlpha: 1,
     ease: Power1.easeInOut,
     scrollTrigger: {
       trigger: el,
-      start: "top 90%",
-      end: "bottom 70%",
+      start: "top 75%",
+      end: "bottom 50%",
       scrub: true,
       toggleActions: "play none none reverse"
     }
   })
 }
 
-export const fadeOutUp = (el) => {
+export const DropOutUp = (el) => {
   gsap.fromTo(el, {
     yPercent: 0,
+    autoAlpha: 1,
   }, {
     yPercent: -150,
+    autoAlpha: 0,
     ease: Power1.easeInOut,
     scrollTrigger: {
       trigger: el,
@@ -69,7 +73,6 @@ export const fadeOutUp = (el) => {
       toggleActions: "play none none reverse"
     }
   })
-
 }
 
 export const slowScrollScale = (el) => (
@@ -98,3 +101,72 @@ export const pinSection = (el) => (
     pinSpacing: "margin"
   })
 )
+
+export const indexPagePreviewTextAnimation = (el) => {
+  // drop down and in
+  gsap.fromTo(el, {
+    yPercent: -200,
+    autoAlpha: 0,
+  }, {
+    yPercent: 0,
+    autoAlpha: 1,
+    ease: Power1.easeInOut,
+    scrollTrigger: {
+      trigger: el,
+      start: "top 90%",
+      end: "bottom 70%",
+      markers: true,
+      scrub: true,
+      toggleActions: "play none none reverse"
+    }
+  })
+  // drop up and out
+  gsap.fromTo(el, {
+    yPercent: 0,
+    autoAlpha: 1,
+  }, {
+    yPercent: -150,
+    autoAlpha: 0,
+    ease: Power1.easeInOut,
+    scrollTrigger: {
+      trigger: el,
+      start: "top 15%",
+      end: "bottom 5%",
+      scrub: true,
+      toggleActions: "play none none reverse"
+    }
+  })
+}
+
+export const indexPageImageAnimation  = (el) => (
+  gsap.fromTo(el, {
+    yPercent: 10,
+    scale: 1,
+  }, {
+    yPercent: -10,
+    scale: 1.075,
+    ease: Power1.easeInOut,
+    scrollTrigger: {
+      trigger: el,
+      start: "top 100%",
+      end: "bottom 0%",
+      scrub: true,
+      toggleActions: "play none none reverse"
+    }
+  })
+)
+
+export const indexTitleDropIn = (el) => {
+  gsap.fromTo(el, {
+    yPercent: -200,
+    rotate: -10,
+    autoAlpha: 0,
+  }, {
+    yPercent: 0,
+    rotate: 0,
+    autoAlpha: 1,
+    ease: Power1.easeInOut,
+    delay: 0.5,
+  })
+}
+

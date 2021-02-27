@@ -3,16 +3,17 @@
 
 ## TODO
 
-* Add some v subtle parallax on index page, and the text drop in effect
+* any parallax or springs on scroll?
+* Mobile
+    * Font size mobile about page
+    * Check layouts etc.  
+    * Check all animations etc 
 * Colours
     Change some eg. previews to light theme
     CHange about page BG to be gradient or to animated?
     Add some SUBTLE use of colour?
 * Fonts
       Optimise css imports
-* Mobile
-  * Font size mobile about page
-  * Top about page scroll animations could be better on mobile
 * Favicons, metadata etc (don't want all from old portfolio but maybe some?)
 * Check hosted site again on firefox and chrome both on desktop and mobile
 * Add hinge clone and uncomment to add development back to nav bar

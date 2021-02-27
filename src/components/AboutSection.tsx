@@ -1,11 +1,19 @@
 import * as React from "react"
 import { AboutBody, AboutImage, AboutList, AboutSubtitle, AboutTitle, Contact, Timeline } from "./aboutComponents"
-import { fadeInLeft, fadeInRight, fadeInUp, fadeOutUp, pinSection, slowScrollScale } from "../animations/animations"
+import {
+  fadeInLeft,
+  fadeInRight,
+  dropInDown,
+  DropOutUp,
+  pinSection,
+  slowScrollScale,
+  indexTitleDropIn
+} from "../animations/animations"
 import { useEffect, useRef } from "react"
 import globalColours from "../styles/globalColours"
 
 
-export function AboutSection({ data }: { data: any }) {
+export function AboutSection({ data, firstPage }: { data: any, firstPage: boolean }) {
   // refs for animations
   const pinRef = useRef(null)
   const fadeInUpRefs = useRef([])
@@ -18,6 +26,8 @@ export function AboutSection({ data }: { data: any }) {
   fadeInRightRefs.current = []
   const slowScrollScaleRefs = useRef([])
   slowScrollScaleRefs.current = []
+  const firstPageRefs = useRef([])
+  firstPageRefs.current = []
   const addToRefs = refList => el => {
     if (el && !refList.current.includes(el)) {
       refList.current.push(el)
@@ -27,10 +37,10 @@ export function AboutSection({ data }: { data: any }) {
   useEffect(() => {
     if (pinRef.current !== null) pinSection(pinRef.current)
     fadeInUpRefs.current.forEach(el => {
-      fadeInUp(el)
+      dropInDown(el)
     })
     fadeOutUpRefs.current.forEach(el => {
-      fadeOutUp(el)
+      DropOutUp(el)
     })
     fadeInLeftRefs.current.forEach(el => {
       fadeInLeft(el)
@@ -40,6 +50,9 @@ export function AboutSection({ data }: { data: any }) {
     })
     slowScrollScaleRefs.current.forEach(el => {
       slowScrollScale(el)
+    })
+    firstPageRefs.current.forEach(el => {
+      indexTitleDropIn(el)
     })
   }, [])
 
@@ -60,16 +73,16 @@ export function AboutSection({ data }: { data: any }) {
   // other elements
   const title = data.hasOwnProperty("title") ? <AboutTitle title={data.title}
                                                            animationRef={el => {
-                                                             addToRefs(fadeInUpRefs)(el)
+                                                             firstPage ? addToRefs(firstPageRefs)(el) : addToRefs(fadeInUpRefs)(el)
                                                              if (!fullpage) addToRefs(fadeOutUpRefs)(el)
                                                            }} /> : null
   const subtitle = data.hasOwnProperty("subtitle") ?
     <AboutSubtitle subtitle={data.subtitle} animationRef={el => {
-      addToRefs(fadeInUpRefs)(el)
+      firstPage ? addToRefs(firstPageRefs)(el) : addToRefs(fadeInUpRefs)(el)
       if (!fullpage) addToRefs(fadeOutUpRefs)(el)
     }} /> : null
   const body = data.hasOwnProperty("body") ? <AboutBody data={data} animationRef={el => {
-    addToRefs(fadeInUpRefs)(el)
+    firstPage ? addToRefs(firstPageRefs)(el) : addToRefs(fadeInUpRefs)(el)
     if (!fullpage) addToRefs(fadeOutUpRefs)(el)
   }} /> : null
 
@@ -93,3 +106,5 @@ export function AboutSection({ data }: { data: any }) {
 
   </div>
 }
+
+AboutSection.defaultProps = { firstPage: false }

@@ -3,6 +3,8 @@ import { ButtonArrow } from "./buttons"
 import { Link } from "gatsby"
 import { preview } from "../assets/pages/about/aboutContents"
 import globalColours from "../styles/globalColours"
+import { useEffect, useRef } from "react"
+import { indexPageImageAnimation, indexPagePreviewTextAnimation, indexTitleDropIn } from "../animations/animations"
 
 const textTitle = "lg:text-9xl md:text-8xl text-6xl font-extrabold font-display"
 const textBodySm = "xl:text-3xl text-2xl font-medium"
@@ -17,17 +19,30 @@ interface HeroTypes {
 }
 
 
-function HeroTextContent(props: { title: string, element: (item) => JSX.Element }) {
+function HeroTextContent(props: { title: string }) {
+  const textAnimRefs = useRef([])
+  textAnimRefs.current = []
+  const addToRefs = refList => el => {
+    if (el && !refList.current.includes(el)) {
+      refList.current.push(el)
+    }
+  }
+  // apply the animations once refs loaded
+  useEffect(() => {
+    textAnimRefs.current.forEach(el => {
+      indexTitleDropIn(el)
+    })
+  }, [])
   return <>
-    <div className="flex">
+    <div className="relative overflow-hidden">
       <p
-        className={`${textTitle} ${globalColours.textLightest} mb-10`}>{props.title}</p>
+        className={`${textTitle} ${globalColours.textLightest} mb-10`} ref={addToRefs(textAnimRefs)}>{props.title}</p>
     </div>
     <p className={`${textBodySm} ${globalColours.textLight} my-5`}>{preview.body.join(" ")}</p>
     <p className={`${textBodySm} ${globalColours.textLight} my-5`}>{preview.subtitle}</p>
-    <div className={`flex flex-col ${textBodySm} ${globalColours.textLight}`}>
-      {preview.list.map(props.element)}
-    </div>
+      {preview.list.map((x, i) => <p key={i} className={`${textBodySm} ${globalColours.textLight}`}>
+          {x}
+        </p>)}
   </>
 }
 
@@ -49,7 +64,7 @@ function HeroText({ title, isTop }: HeroTypes & HeroTextTypes) {
     sm:col-start-2 sm:col-span-6 \
     lg:col-span-5 lg:col-start-2 relative " + (isTop ? "z-10" : "z-0")}>
     <div className={""}>
-      <HeroTextContent title={title} element={item => <p className="">{item}</p>} />
+      <HeroTextContent title={title} />
     </div>
     <HeroTextButton top={isTop} to={aboutSlug} />
   </div>

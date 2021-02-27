@@ -11,7 +11,7 @@ export default function AboutPage() {
     <Layout>
       <Seo title="About" />
       <div className={`flex flex-col items-center justify-around ${globalColours.bgBlack}`}>
-        {about.map((data, i) => <AboutSection key={i} data={data} />)}
+        {about.map((data, i) => <AboutSection key={i} firstPage={i === 0} data={data} />)}
       </div>
     </Layout>
   )
