@@ -41,16 +41,14 @@ export const fadeInRight = (el) => (
 
 export const fadeInUp = (el) => {
   gsap.fromTo(el, {
-    autoAlpha: 0,
-    y: 50
+    yPercent: 150
   }, {
-    autoAlpha: 1,
-    y: 0,
+    yPercent: 0,
     ease: Power1.easeInOut,
     scrollTrigger: {
       trigger: el,
-      start: "top 95%",
-      end: "bottom 90%",
+      start: "top 90%",
+      end: "bottom 70%",
       scrub: true,
       toggleActions: "play none none reverse"
     }
@@ -59,16 +57,14 @@ export const fadeInUp = (el) => {
 
 export const fadeOutUp = (el) => {
   gsap.fromTo(el, {
-    autoAlpha: 1,
-    y: 0
+    yPercent: 0,
   }, {
-    autoAlpha: 0,
-    y: -50,
+    yPercent: -150,
     ease: Power1.easeInOut,
     scrollTrigger: {
       trigger: el,
-      start: "top 5%",
-      end: "bottom 7%",
+      start: "top 15%",
+      end: "bottom 5%",
       scrub: true,
       toggleActions: "play none none reverse"
     }
@@ -78,9 +74,9 @@ export const fadeOutUp = (el) => {
 
 export const slowScrollScale = (el) => (
   gsap.fromTo(el, {
-    y: 100
+    yPercent: 25
   }, {
-    y: -100,
+    yPercent: -25,
     ease: Power1.easeInOut,
     scrollTrigger: {
       trigger: el,

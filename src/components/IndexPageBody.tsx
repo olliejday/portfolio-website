@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import globalColours from "../styles/globalColours"
 
 const textLg = "xl:text-8xl text-7xl"
-const textMd = "xl:text-5xl text-4xl"
+const textMd = "xl:text-6xl text-5xl"
 
 function PreviewText({ data, textColour }) {
   return <>
@@ -12,7 +12,7 @@ function PreviewText({ data, textColour }) {
       className={`${textLg} ${textColour} my-5 font-bold font-display`}>{data.frontmatter.title}</p>
     </Link>
     <Link to={data.fields.slug}><p
-      className={`${textMd} ${globalColours.textLight} text-opacity-80 mt-5 font-semibold font-display`}>{data.frontmatter.subtitle}</p>
+      className={`${textMd} ${globalColours.textLight} text-opacity-80 mt-5 font-semibold`}>{data.frontmatter.subtitle}</p>
     </Link>
   </>
 }
@@ -93,11 +93,11 @@ export function IndexPageBody({ data }: any) {
                                                                bgColourLeft={globalColours.bgBlack}
                                                                bgColourRight={globalColours.bgBlack}
                                                                textColourLeft={globalColours.textLightest}
-                                                               textColourRight={globalColours.textLight} />)
+                                                               textColourRight={globalColours.textLightest} />)
 
     else if (i + 1 < uxEdges.length) uxPreviews.push(<FullWidthPreview key={"ux" + i + 1} node={uxEdges[i + 1].node}
                                                                        bgColour={globalColours.bgBlack}
-                                                                       textColour={globalColours.textLight}
+                                                                       textColour={globalColours.textLightest}
                                                                        imageLeft={(i / 3) % 2 !== 0} />)
   }
 
@@ -112,10 +112,10 @@ export function IndexPageBody({ data }: any) {
                                                                  bgColourLeft={globalColours.bgBlack}
                                                                  bgColourRight={globalColours.bgBlack}
                                                                  textColourLeft={globalColours.textLightest}
-                                                                 textColourRight={globalColours.textLight} />)
+                                                                 textColourRight={globalColours.textLightest} />)
     else if (i + 1 < devEdges.length) devPreviews.push(<FullWidthPreview key={"ux" + i + 1} node={devEdges[i + 1].node}
                                                                          bgColour={globalColours.bgBlack}
-                                                                         textColour={globalColours.textLight}
+                                                                         textColour={globalColours.textLightest}
                                                                          imageLeft={(i / 3) % 2 !== 0} />)
   }
   return <div>

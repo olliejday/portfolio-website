@@ -5,7 +5,7 @@ import { preview } from "../assets/pages/about/aboutContents"
 import globalColours from "../styles/globalColours"
 
 const textTitle = "lg:text-9xl md:text-8xl text-6xl font-extrabold font-display"
-const textBodySm = "xl:text-2xl text-xl font-medium"
+const textBodySm = "xl:text-3xl text-2xl font-medium"
 
 interface HeroTextTypes {
   title: string,

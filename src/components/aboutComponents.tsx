@@ -1,4 +1,5 @@
 import * as React from "react"
+import globalColours from "../styles/globalColours"
 
 const textSm = "text-4xl md:text-6xl lg:text-7xl"
 const textMd = "text-5xl md:text-7xl lg:text-8xl"
@@ -15,7 +16,7 @@ export function Timeline({ data, animationRefLeft, animationRefRight }:
     {data.map(({ date, title, subtitle }, i) => (
       <div key={i} ref={i % 2 === 0 ? animationRefLeft : animationRefRight}
            className={`${i % 2 === 0 ? "items-end text-right" : "items-start text-left"} justify-around flex flex-col m-10`}>
-        <p className={`${textSm} font-medium`}>{date}</p>
+        <p className={`${textSm} ${globalColours.textLight} font-medium`}>{date}</p>
         <p className={`${textMd} font-bold`}>{title}</p>
         <p className={`${textSm} font-medium`}>{subtitle}</p>
       </div>
@@ -36,11 +37,20 @@ export function Contact({
                         }: { cv: [[string, string]], email: [string, string], animationRef: (el) => void }) {
   const [emailText, link] = email
   return <div className="mx-10 flex flex-col justify-around">
-    <div className="my-10">
-      {cv.map(([title, file], i) => <a key={i} className={`${textMd} hover:underline font-medium`} ref={animationRef}
-                                       href={file}>{title} {i < cv.length - 1 ? "/ " : ""}</a>)}
+    <div className="mt-10 overflow-hidden relative">
+      <p className={`${textMd} my-10 font-medium`}
+         ref={animationRef}>{cv.map(([title, file], i) => (<>
+        <a key={i} className="hover:underline" href={file}>{title}</a>
+        <span> {i < cv.length - 1 ? "/ " : ""}</span>
+      </>))}</p>
     </div>
-    {<a className={`${textSm} break-all my-10 hover:underline font-medium`} href={link} ref={animationRef}>{emailText}</a>}
+    <div className="overflow-hidden relative">
+      {<p className={`${textSm} break-all my-10 hover:underline font-medium`}
+          ref={animationRef}>
+        <a href={link}>{emailText}</a>
+      </p>
+      }
+    </div>
   </div>
 }
 
@@ -49,17 +59,23 @@ export function AboutImage({ image, animationRef }) {
 }
 
 export function AboutBody({ data, animationRef }) {
-  return data.body.map((b, i) => <p key={i} ref={animationRef}
-                                    className={`${textMd} font-bold my-10`}>{b}</p>)
+  return data.body.map((b, i) => <div className="overflow-hidden relative"><p key={i} ref={animationRef}
+                                                                              className={`${textMd} font-bold my-10`}>{b}</p>
+  </div>)
 }
 
 export function AboutSubtitle({
                                 subtitle, animationRef
                               }: { subtitle: string, animationRef: (el) => void }) {
-  return <p key={subtitle} className={`${textMd} font-bold m-5`} ref={animationRef}>{subtitle}</p>
+  return <div className="overflow-hidden relative">
+    <p key={subtitle} className={`${textMd} font-bold m-5`}
+       ref={animationRef}>{subtitle}</p>
+  </div>
 }
 
 export function AboutTitle({ title, animationRef }: { title: string, animationRef: (el) => void }) {
-  return <p key={title} className={`${textLg} font-bold mb-6`} ref={animationRef}>{title}</p>
+  return <div className="overflow-hidden relative">
+    <p key={title} className={`${textLg} font-bold mb-6`} ref={animationRef}>{title}</p>
+  </div>
 }
 

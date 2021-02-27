@@ -7,12 +7,13 @@ module.exports = {
     colors : {
       transparent: 'transparent',
       current: 'currentColor',
-      black: "#0D0D0D",
+      black: "#080808",
+      blackText: "#1D1D1F",
       white: colors.white,
       gray: colors.gray,
     },
     fontFamily: {
-      "display": ["Syne", "sans-serif"],
+      "display": ["Inter", "sans-serif"],
       "sans": ["Inter", "sans-serif"],
     },
     extend: {
@@ -32,7 +33,15 @@ module.exports = {
         "70vh": "70vh",
         "80vh": "80vh",
         "90vh": "90vh",
-      }
+      },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            color: theme('colors.gray.800'),
+            fontWeight: '500',
+          },
+        },
+      }),
     }
   },
   variants: {
