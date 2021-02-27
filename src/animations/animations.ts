@@ -115,7 +115,6 @@ export const indexPagePreviewTextAnimation = (el) => {
       trigger: el,
       start: "top 90%",
       end: "bottom 70%",
-      markers: true,
       scrub: true,
       toggleActions: "play none none reverse"
     }
