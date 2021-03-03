@@ -14,8 +14,8 @@ export default function PageTemplate({ data: { site, mdx } }) {
   return (
     <Layout>
     <Seo title={mdx.frontmatter.title} description={mdx.excerpt} />
-      <div className="mt-10 lg:mt-20">
-        <article className="prose mx-auto px-2 lg:prose-xl">
+      <div className="mt-24">
+        <article className="prose mx-auto px-4 lg:prose-lg">
         <h1>{mdx.frontmatter.title}</h1>
         <MDXProvider components={shortcodes}>
           <MDXRenderer>{mdx.body}</MDXRenderer>

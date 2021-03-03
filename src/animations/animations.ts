@@ -42,14 +42,14 @@ export const fadeInRight = (el) => (
 export const dropInDown = (el) => {
   gsap.fromTo(el, {
     yPercent: -200,
-    autoAlpha: 0,
+    autoAlpha: 0
   }, {
     yPercent: 0,
     autoAlpha: 1,
     ease: Power1.easeInOut,
     scrollTrigger: {
       trigger: el,
-      start: "top 75%",
+      start: "top 80%",
       end: "bottom 50%",
       scrub: true,
       toggleActions: "play none none reverse"
@@ -60,7 +60,7 @@ export const dropInDown = (el) => {
 export const DropOutUp = (el) => {
   gsap.fromTo(el, {
     yPercent: 0,
-    autoAlpha: 1,
+    autoAlpha: 1
   }, {
     yPercent: -150,
     autoAlpha: 0,
@@ -83,8 +83,8 @@ export const slowScrollScale = (el) => (
     ease: Power1.easeInOut,
     scrollTrigger: {
       trigger: el,
-      start: "top 100%",
-      end: "bottom 0%",
+      start: "top bottom",
+      end: "bottom top",
       scrub: true,
       toggleActions: "play none none reverse"
     }
@@ -103,17 +103,16 @@ export const pinSection = (el) => (
 )
 
 export const indexPagePreviewTextAnimation = (el) => {
-  // drop down and in
   gsap.fromTo(el, {
-    yPercent: -200,
-    autoAlpha: 0,
+    yPercent: 150,
+    autoAlpha: 0
   }, {
     yPercent: 0,
     autoAlpha: 1,
     ease: Power1.easeInOut,
     scrollTrigger: {
       trigger: el,
-      start: "top 90%",
+      start: "top 85%",
       end: "bottom 70%",
       scrub: true,
       toggleActions: "play none none reverse"
@@ -122,7 +121,7 @@ export const indexPagePreviewTextAnimation = (el) => {
   // drop up and out
   gsap.fromTo(el, {
     yPercent: 0,
-    autoAlpha: 1,
+    autoAlpha: 1
   }, {
     yPercent: -150,
     autoAlpha: 0,
@@ -137,13 +136,14 @@ export const indexPagePreviewTextAnimation = (el) => {
   })
 }
 
-export const indexPageImageAnimation  = (el) => (
+
+export const indexPageImageAnimation = (el) => (
   gsap.fromTo(el, {
     yPercent: 10,
-    scale: 1,
+    scale: 1
   }, {
     yPercent: -10,
-    scale: 1.075,
+    scale: 1.1,
     ease: Power1.easeInOut,
     scrollTrigger: {
       trigger: el,
@@ -159,13 +159,13 @@ export const indexTitleDropIn = (el) => {
   gsap.fromTo(el, {
     yPercent: -200,
     rotate: -10,
-    autoAlpha: 0,
+    autoAlpha: 0
   }, {
     yPercent: 0,
     rotate: 0,
     autoAlpha: 1,
     ease: Power1.easeInOut,
-    delay: 0.5,
+    delay: 0.333
   })
 }
 

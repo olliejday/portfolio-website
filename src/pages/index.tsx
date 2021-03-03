@@ -11,7 +11,7 @@ export default function IndexPage({ data }) {
   return (
     <Layout>
       <Seo title={data.site.siteMetadata.title} />
-      <div className={globalColours.bgBlack}>
+      <div className={globalColours.bgDark}>
         <HeroIndex title={data.site.siteMetadata.title} />
         <IndexPageBody data={data} />
       </div>

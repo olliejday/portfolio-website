@@ -86,14 +86,14 @@ export function AboutSection({ data, firstPage }: { data: any, firstPage: boolea
     if (!fullpage) addToRefs(fadeOutUpRefs)(el)
   }} /> : null
 
-  return <div className="w-screen p-10 box-border" ref={pinRef}>
+  return <div className="w-screen my-10 p-7 md:p-10 box-border" ref={pinRef}>
     <div
       className={`w-full box-border font-display ${globalColours.textLightest} overflow-hidden flex flex-row`}>
       {/* Full page */}
       {timeline}
       {/* How much space for the title etc */}
       <div
-        className={fullpage ? "" : halfpage ? `w-2/3 relative z-10 flex flex-col p-10` : `w-full relative z-10 flex flex-col p-10`}>
+        className={fullpage ? "" : `${halfpage ? `md:w-2/3` : ""} relative z-10 flex flex-col md:p-10`}>
         {title}
         {subtitle}
         {body}

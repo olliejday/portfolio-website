@@ -8,12 +8,11 @@ module.exports = {
       transparent: 'transparent',
       current: 'currentColor',
       black: "#080808",
-      blackText: "#1D1D1F",
       white: colors.white,
-      gray: colors.gray,
+      gray: colors.warmGray,
     },
     fontFamily: {
-      "display": ["Inter", "sans-serif"],
+      "display": ["Syne", "sans-serif"],
       "sans": ["Inter", "sans-serif"],
     },
     extend: {
@@ -37,7 +36,7 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            color: theme('colors.gray.800'),
+            color: theme('colors.gray.700'),
             fontWeight: '500',
           },
         },

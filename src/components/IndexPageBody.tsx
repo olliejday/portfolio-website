@@ -5,21 +5,25 @@ import globalColours from "../styles/globalColours"
 import { useEffect, useRef } from "react"
 import { indexPageImageAnimation, indexPagePreviewTextAnimation, slowScrollScale } from "../animations/animations"
 
-const textLg = "xl:text-8xl text-7xl"
-const textMd = "xl:text-6xl text-5xl"
+const textLg = "xl:text-8xl md:text-6xl text-5xl"
+const textMd = "xl:text-6xl md:text-5xl text-4xl"
 
 function PreviewText({ data, textColour, animRefs }) {
   return <>
     <div className="overflow-hidden relative">
-      <Link to={data.fields.slug}><p
+      <Link to={data.fields.slug}>
+        <p
+        key={data.frontmatter.title + "1"}
         ref={animRefs}
         className={`${textLg} ${textColour} my-5 font-bold font-display`}>{data.frontmatter.title}</p>
       </Link>
     </div>
     <div className="overflow-hidden relative">
-      <Link to={data.fields.slug}><p
+      <Link to={data.fields.slug}>
+        <p
+        key={data.frontmatter.subtitle + "2"}
         ref={animRefs}
-        className={`${textMd} ${globalColours.textLight} text-opacity-80 mt-5 font-semibold`}>{data.frontmatter.subtitle}</p>
+        className={`${textMd} ${globalColours.textLight} text-opacity-80 mt-5 font-display font-medium`}>{data.frontmatter.subtitle}</p>
       </Link>
     </div>
   </>
@@ -30,7 +34,7 @@ function FullWidthPreview({ node, bgColour, textColour, textAnimRefs, imageAnimR
   const slug = data.fields.slug
   return <div className={`px-10 pb-10`}>
     <div
-      className={`${bgColour} overflow-hidden w-full mx-auto px-10 lg:px-28 py-8 box-border grid ` +
+      className={`${bgColour} overflow-hidden w-full mx-auto px-10 xl:px-28 py-8 box-border grid ` +
       `grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 grid-flow-row-dense gap-16`}>
       <div
         className={`flex flex-col justify-start lg:justify-end mx-5 lg:pt-28 lg:pb-16 row-start-1 ${imageLeft ? "lg:col-start-2" : "lg:col-start-1"}`}
@@ -120,22 +124,22 @@ export function IndexPageBody({ data }: any) {
     // every third is a full
     // then two as a double
 
-    uxPreviews.push(<FullWidthPreview key={"ux" + i} node={uxEdges[i].node} bgColour={globalColours.bgBlack}
+    uxPreviews.push(<FullWidthPreview key={"ux" + i} node={uxEdges[i].node} bgColour={globalColours.bgDark}
                                       textColour={globalColours.textLightest}
                                       textAnimRefs={addToRefs(textAnimRefs)}
                                       imageAnimRefs={addToRefs(imageAnimRefs)}
                                       imageLeft={(i / 3) % 2 === 0} />)
     if (i + 2 < uxEdges.length) uxPreviews.push(<DoublePreview key={"ux" + i + 1} nodeLeft={uxEdges[i + 1].node}
                                                                nodeRight={uxEdges[i + 2].node}
-                                                               bgColourLeft={globalColours.bgBlack}
-                                                               bgColourRight={globalColours.bgBlack}
+                                                               bgColourLeft={globalColours.bgDark}
+                                                               bgColourRight={globalColours.bgDark}
                                                                textColourLeft={globalColours.textLightest}
                                                                textColourRight={globalColours.textLightest}
                                                                textAnimRefs={addToRefs(textAnimRefs)}
                                                                imageAnimRefs={addToRefs(imageAnimRefs)} />)
 
     else if (i + 1 < uxEdges.length) uxPreviews.push(<FullWidthPreview key={"ux" + i + 1} node={uxEdges[i + 1].node}
-                                                                       bgColour={globalColours.bgBlack}
+                                                                       bgColour={globalColours.bgDark}
                                                                        textColour={globalColours.textLightest}
                                                                        textAnimRefs={addToRefs(textAnimRefs)}
                                                                        imageAnimRefs={addToRefs(imageAnimRefs)}
@@ -145,28 +149,28 @@ export function IndexPageBody({ data }: any) {
   for (let i = 0; i < devEdges.length; i += 3) {
     // every third is a full
     // then two as a double
-    devPreviews.push(<FullWidthPreview key={"ux" + i} node={devEdges[i].node} bgColour={globalColours.bgBlack}
+    devPreviews.push(<FullWidthPreview key={"ux" + i} node={devEdges[i].node} bgColour={globalColours.bgDark}
                                        textColour={globalColours.textLightest}
                                        textAnimRefs={addToRefs(textAnimRefs)}
                                        imageAnimRefs={addToRefs(imageAnimRefs)}
                                        imageLeft={(i / 3) % 2 === 0} />)
     if (i + 2 < devEdges.length) devPreviews.push(<DoublePreview key={"ux" + i + 1} nodeLeft={devEdges[i + 1].node}
                                                                  nodeRight={devEdges[i + 2].node}
-                                                                 bgColourLeft={globalColours.bgBlack}
-                                                                 bgColourRight={globalColours.bgBlack}
+                                                                 bgColourLeft={globalColours.bgDark}
+                                                                 bgColourRight={globalColours.bgDark}
                                                                  textColourLeft={globalColours.textLightest}
                                                                  textColourRight={globalColours.textLightest}
                                                                  textAnimRefs={addToRefs(textAnimRefs)}
                                                                  imageAnimRefs={addToRefs(imageAnimRefs)} />)
 
     else if (i + 1 < devEdges.length) devPreviews.push(<FullWidthPreview key={"ux" + i + 1} node={devEdges[i + 1].node}
-                                                                         bgColour={globalColours.bgBlack}
+                                                                         bgColour={globalColours.bgDark}
                                                                          textColour={globalColours.textLightest}
                                                                          textAnimRefs={addToRefs(textAnimRefs)}
                                                                          imageAnimRefs={addToRefs(imageAnimRefs)}
                                                                          imageLeft={(i / 3) % 2 !== 0} />)
   }
-  return <div className="pb-48">
+  return <div className="pb-6 md:pb-48">
     <div id="devPreviews">
       {devPreviews}
     </div>

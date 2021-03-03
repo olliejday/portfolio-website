@@ -4,10 +4,9 @@ import { Link } from "gatsby"
 import { preview } from "../assets/pages/about/aboutContents"
 import globalColours from "../styles/globalColours"
 import { useEffect, useRef } from "react"
-import { indexPageImageAnimation, indexPagePreviewTextAnimation, indexTitleDropIn } from "../animations/animations"
+import { indexTitleDropIn } from "../animations/animations"
 
-const textTitle = "lg:text-9xl md:text-8xl text-6xl font-extrabold font-display"
-const textBodySm = "xl:text-3xl text-2xl font-medium"
+const textBodySm = "lg:text-6xl text-3xl font-bold font-display"
 
 interface HeroTextTypes {
   title: string,
@@ -19,7 +18,20 @@ interface HeroTypes {
 }
 
 
-function HeroTextContent(props: { title: string }) {
+function HeroTextButton({ to, animateRef }) {
+  return <>
+    <div className="flex-row items-center flex mt-10">
+      <Link to={to}><ButtonArrow
+        addToref={animateRef}
+        containerClassNames="mr-4"
+        classNames={`mr-4 rounded-full py-2 px-5 ${globalColours.accent} ${globalColours.accentHover} ${globalColours.textLightest} font-semibold flex ${textBodySm}`}>About </ButtonArrow>
+      </Link>
+    </div>
+  </>
+}
+
+function HeroText({ title }: HeroTypes & HeroTextTypes) {
+  const aboutSlug = "/about"
   const textAnimRefs = useRef([])
   textAnimRefs.current = []
   const addToRefs = refList => el => {
@@ -33,55 +45,34 @@ function HeroTextContent(props: { title: string }) {
       indexTitleDropIn(el)
     })
   }, [])
-  return <>
-    <div className="relative overflow-hidden">
-      <p
-        className={`${textTitle} ${globalColours.textLightest} mb-10`} ref={addToRefs(textAnimRefs)}>{props.title}</p>
-    </div>
-    <p className={`${textBodySm} ${globalColours.textLight} my-5`}>{preview.body.join(" ")}</p>
-    <p className={`${textBodySm} ${globalColours.textLight} my-5`}>{preview.subtitle}</p>
-      {preview.list.map((x, i) => <p key={i} className={`${textBodySm} ${globalColours.textLight}`}>
-          {x}
-        </p>)}
-  </>
-}
-
-function HeroTextButton(props: { top: boolean, to: string }) {
-  return <>
-    {props.top ? <div className="flex-row items-center flex mt-9">
-      <Link to={props.to}><ButtonArrow
-        containerClassNames="mr-4"
-        classNames={`mr-4 rounded-full py-2 px-5 ${globalColours.accent} ${globalColours.accentHover} ${globalColours.textLightest} font-semibold flex ${textBodySm}`}>About </ButtonArrow>
-      </Link>
-    </div> : null}
-  </>
-}
-
-function HeroText({ title, isTop }: HeroTypes & HeroTextTypes) {
-  const aboutSlug = "/about"
   // rendered twice but only show buttons once
-  return <div className={"row-start-1 col-start-1 col-span-10 \
-    sm:col-start-2 sm:col-span-6 \
-    lg:col-span-5 lg:col-start-2 relative " + (isTop ? "z-10" : "z-0")}>
-    <div className={""}>
-      <HeroTextContent title={title} />
+  return <>
+    <div className={`${textBodySm} ${globalColours.textLightest} row-start-2 col-span-10 \
+    sm:col-span-6 lg:col-span-5 relative my-5 z-10`}>
+        <div className="space-y-3 my-3">
+          {preview.body.map(el => <p>{el}</p>)}
+        </div>
+        <div className="mt-10">
+          <p>{preview.subtitle}</p>
+          <div className="space-y-1 my-3">
+            {preview.list.map((x, i) => <p key={i} className={`${textBodySm} ${globalColours.textLight}`}>{x}</p>)}
+          </div>
+        </div>
+        <HeroTextButton to={aboutSlug} animateRef={addToRefs(textAnimRefs)} />
     </div>
-    <HeroTextButton top={isTop} to={aboutSlug} />
-  </div>
+  </>
 }
-
-HeroText.defaultProps = { isTop: false }
 
 function HeroDisplay() {
   const image = preview.image
   return <div
-    className="relative col-span-5 col-start-8 row-start-1 flex-col justify-end lg:justify-center sm:flex hidden">
+    className="relative col-span-5 col-start-7 row-start-2 flex-col justify-center sm:flex hidden">
     {image}
   </div>
 }
 
 export default function HeroIndex({ title }: HeroTypes) {
-  return <div className={`w-full grid grid-cols-12 grid-rows-1 gap-2 mt-10 pt-10 mb-10 pb-20 lg:py-24`}>
+  return <div className={`w-full grid grid-cols-12 grid-rows-1 gap-2 pl-3 sm:pl-20 py-20 mb-10 pb-20`}>
     <HeroText isTop title={title} />
     <HeroDisplay />
   </div>
