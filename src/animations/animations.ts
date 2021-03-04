@@ -13,8 +13,8 @@ export const fadeInLeft = (el) => (
     ease: Power1.easeIn,
     scrollTrigger: {
       trigger: el,
-      start: "top bottom",
-      end: "center center",
+      start: "top 90%",
+      end: "center 40%",
       scrub: true,
       toggleActions: "play none none reverse"
     }
@@ -31,8 +31,8 @@ export const fadeInRight = (el) => (
     ease: Power1.easeIn,
     scrollTrigger: {
       trigger: el,
-      start: "top bottom",
-      end: "center center",
+      start: "top 90%",
+      end: "center 40%",
       scrub: true,
       toggleActions: "play none none reverse"
     }
@@ -104,7 +104,7 @@ export const pinSection = (el) => (
 
 export const indexPagePreviewTextAnimation = (el) => {
   gsap.fromTo(el, {
-    yPercent: 150,
+    yPercent: 70,
     autoAlpha: 0
   }, {
     yPercent: 0,
@@ -112,8 +112,8 @@ export const indexPagePreviewTextAnimation = (el) => {
     ease: Power1.easeIn,
     scrollTrigger: {
       trigger: el,
-      start: "top 92.5%",
-      end: "bottom 72.5%",
+      start: "top 95%",
+      end: "bottom 75%",
       scrub: true,
       toggleActions: "play none none reverse"
     }
@@ -123,9 +123,9 @@ export const indexPagePreviewTextAnimation = (el) => {
     yPercent: 0,
     autoAlpha: 1
   }, {
-    yPercent: -150,
+    yPercent: -100,
     autoAlpha: 0,
-    ease: Power1.easeOut,
+    ease: Power1.easeIn,
     scrollTrigger: {
       trigger: el,
       start: "top 12.5%",
