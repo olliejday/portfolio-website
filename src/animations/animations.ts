@@ -10,7 +10,7 @@ export const fadeInLeft = (el) => (
   }, {
     autoAlpha: 1,
     x: 0,
-    ease: Power1.easeInOut,
+    ease: Power1.easeIn,
     scrollTrigger: {
       trigger: el,
       start: "top bottom",
@@ -28,7 +28,7 @@ export const fadeInRight = (el) => (
   }, {
     autoAlpha: 1,
     x: 0,
-    ease: Power1.easeInOut,
+    ease: Power1.easeIn,
     scrollTrigger: {
       trigger: el,
       start: "top bottom",
@@ -46,7 +46,7 @@ export const dropInDown = (el) => {
   }, {
     yPercent: 0,
     autoAlpha: 1,
-    ease: Power1.easeInOut,
+    ease: Power1.easeIn,
     scrollTrigger: {
       trigger: el,
       start: "top 80%",
@@ -64,7 +64,7 @@ export const DropOutUp = (el) => {
   }, {
     yPercent: -150,
     autoAlpha: 0,
-    ease: Power1.easeInOut,
+    ease: Power1.easeOut,
     scrollTrigger: {
       trigger: el,
       start: "top 15%",
@@ -109,11 +109,11 @@ export const indexPagePreviewTextAnimation = (el) => {
   }, {
     yPercent: 0,
     autoAlpha: 1,
-    ease: Power1.easeInOut,
+    ease: Power1.easeIn,
     scrollTrigger: {
       trigger: el,
-      start: "top 85%",
-      end: "bottom 70%",
+      start: "top 92.5%",
+      end: "bottom 72.5%",
       scrub: true,
       toggleActions: "play none none reverse"
     }
@@ -125,11 +125,11 @@ export const indexPagePreviewTextAnimation = (el) => {
   }, {
     yPercent: -150,
     autoAlpha: 0,
-    ease: Power1.easeInOut,
+    ease: Power1.easeOut,
     scrollTrigger: {
       trigger: el,
-      start: "top 15%",
-      end: "bottom 5%",
+      start: "top 12.5%",
+      end: "bottom 2.5%",
       scrub: true,
       toggleActions: "play none none reverse"
     }
@@ -164,7 +164,7 @@ export const indexTitleDropIn = (el) => {
     yPercent: 0,
     rotate: 0,
     autoAlpha: 1,
-    ease: Power1.easeInOut,
+    ease: Power1.easeIn,
     delay: 0.333
   })
 }
