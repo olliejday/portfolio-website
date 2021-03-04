@@ -120,16 +120,14 @@ export const indexPagePreviewTextAnimation = (el) => {
   })
   // drop up and out
   gsap.fromTo(el, {
-    yPercent: 0,
-    autoAlpha: 1
   }, {
     yPercent: -100,
     autoAlpha: 0,
     ease: Power1.easeIn,
     scrollTrigger: {
       trigger: el,
-      start: "top 12.5%",
-      end: "bottom 2.5%",
+      start: "top 20%",
+      end: "bottom 7.5%",
       scrub: true,
       toggleActions: "play none none reverse"
     }
