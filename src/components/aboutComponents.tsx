@@ -17,8 +17,8 @@ export function Timeline({ data, animationRefLeft, animationRefRight }:
       <div key={i} ref={i % 2 === 0 ? animationRefLeft : animationRefRight}
            className={`${i % 2 === 0 ? "items-end text-right" : "items-start text-left"} justify-around flex flex-col my-6 md:m-10`}>
         <div className="w-full md:w-3/4">
-          <p className={`${textSm} ${globalColours.textLight} font-medium`}>{date}</p>
-          <p className={`${textMd} font-bold`}>{title}</p>
+          <p className={`${textSm} ${globalColours.textLight}`}>{date}</p>
+          <p className={`${textMd} font-semibold`}>{title}</p>
           <p className={`${textSm} font-medium`}>{subtitle}</p>
         </div>
       </div>
@@ -28,7 +28,7 @@ export function Timeline({ data, animationRefLeft, animationRefRight }:
 
 export function AboutList({ data, animationRef }: { data: [string], animationRef: (el) => void }) {
   return <div className="flex flex-col justify-end md:m-10">
-    {data.map((item, i) => <p key={i} ref={animationRef} className={`${textMd} font-bold my-5`}>{item}</p>)}
+    {data.map((item, i) => <p key={i} ref={animationRef} className={`${textMd} font-semibold my-5`}>{item}</p>)}
   </div>
 }
 
@@ -57,12 +57,12 @@ export function Contact({
 }
 
 export function AboutImage({ image, animationRef }) {
-  return <div className="w-1/3 absolute top-1/2 md:top-0 right-1" ref={animationRef}>{image}</div>
+  return <div className="w-1/3 absolute top-2/3 xl:top-0 right-1" ref={animationRef}>{image}</div>
 }
 
 export function AboutBody({ data, animationRef }) {
   return data.body.map((b, i) => <div className="overflow-hidden relative"><p key={i} ref={animationRef}
-                                                                              className={`${textMd} font-bold my-10`}>{b}</p>
+                                                                              className={`${textMd} font-semibold my-10`}>{b}</p>
   </div>)
 }
 
@@ -70,7 +70,7 @@ export function AboutSubtitle({
                                 subtitle, animationRef
                               }: { subtitle: string, animationRef: (el) => void }) {
   return <div className="overflow-hidden relative">
-    <p key={subtitle} className={`${textMd} font-bold my-3 md:m-5`}
+    <p key={subtitle} className={`${textMd} font-semibold my-3 md:m-5`}
        ref={animationRef}>{subtitle}</p>
   </div>
 }

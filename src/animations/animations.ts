@@ -77,10 +77,12 @@ export const DropOutUp = (el) => {
 
 export const slowScrollScale = (el) => (
   gsap.fromTo(el, {
-    yPercent: 25
+    yPercent: 33,
+    scale: 1
   }, {
-    yPercent: -25,
-    ease: Power1.easeInOut,
+    yPercent: -33,
+    scale: 1.1,
+    ease: Power1.easeIn,
     scrollTrigger: {
       trigger: el,
       start: "top bottom",
@@ -104,30 +106,14 @@ export const pinSection = (el) => (
 
 export const indexPagePreviewTextAnimation = (el) => {
   gsap.fromTo(el, {
-    yPercent: 70,
-    autoAlpha: 0
+    y: 60
   }, {
-    yPercent: 0,
-    autoAlpha: 1,
-    ease: Power1.easeIn,
+    y: -60,
+    ease: Power1.easeInOut,
     scrollTrigger: {
       trigger: el,
-      start: "top 95%",
-      end: "bottom 75%",
-      scrub: true,
-      toggleActions: "play none none reverse"
-    }
-  })
-  // drop up and out
-  gsap.fromTo(el, {
-  }, {
-    yPercent: -100,
-    autoAlpha: 0,
-    ease: Power1.easeIn,
-    scrollTrigger: {
-      trigger: el,
-      start: "top 20%",
-      end: "bottom 7.5%",
+      start: "center bottom",
+      end: "center top",
       scrub: true,
       toggleActions: "play none none reverse"
     }
@@ -137,16 +123,16 @@ export const indexPagePreviewTextAnimation = (el) => {
 
 export const indexPageImageAnimation = (el) => (
   gsap.fromTo(el, {
-    yPercent: 10,
+    yPercent: 30,
     scale: 1
   }, {
-    yPercent: -10,
+    yPercent: -30,
     scale: 1.1,
-    ease: Power1.easeInOut,
+    ease: Power1.easeIn,
     scrollTrigger: {
       trigger: el,
-      start: "top 100%",
-      end: "bottom 0%",
+      start: "center bottom",
+      end: "center top",
       scrub: true,
       toggleActions: "play none none reverse"
     }

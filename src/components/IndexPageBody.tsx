@@ -10,15 +10,15 @@ const textMd = "xl:text-6xl md:text-5xl text-4xl"
 
 function PreviewText({ data, textColour, animRefs }) {
   return <>
-    <div className="overflow-hidden relative">
+    <div className="relative">
       <Link to={data.fields.slug}>
         <p
         key={data.frontmatter.title + "1"}
         ref={animRefs}
-        className={`${textLg} ${textColour} my-5 font-bold font-display`}>{data.frontmatter.title}</p>
+        className={`${textLg} ${textColour} my-5 font-semibold font-display`}>{data.frontmatter.title}</p>
       </Link>
     </div>
-    <div className="overflow-hidden relative">
+    <div className="relative">
       <Link to={data.fields.slug}>
         <p
         key={data.frontmatter.subtitle + "2"}
@@ -32,13 +32,13 @@ function PreviewText({ data, textColour, animRefs }) {
 function FullWidthPreview({ node, bgColour, textColour, textAnimRefs, imageAnimRefs, imageLeft }) {
   const data = node.childMdx
   const slug = data.fields.slug
-  return <div className={`px-10 pb-10`}>
+  return <div className={`sm:px-10 pb-10`}>
     <div
-      className={`${bgColour} overflow-hidden w-full mx-auto px-10 xl:px-28 py-8 box-border grid ` +
+      className={`${bgColour} overflow-hidden w-full mx-auto px-3 md:px-10 xl:px-28 py-8 box-border grid ` +
       `grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 grid-flow-row-dense gap-16`}>
       <div
         className={`flex flex-col justify-start lg:justify-end mx-5 lg:pt-28 lg:pb-16 row-start-1 ${imageLeft ? "lg:col-start-2" : "lg:col-start-1"}`}
-        style={{ minHeight: "24rem" }}>
+        style={{ minHeight: "25vh" }}>
         <PreviewText data={data} textColour={textColour} animRefs={textAnimRefs} />
       </div>
       <div
@@ -69,8 +69,9 @@ function HalfWidthPreview({ node, bgColour, textColour, textAnimRefs, imageAnimR
   const slug = data.fields.slug
   return <div
     className={`w-full px-10 lg:mx-5 py-6 my-5 overflow-hidden box-border grid grid-rows-2 gap-16 ${bgColour}`}>
-    <div className="flex flex-col justify-start lg:pb-16">
-      <PreviewText data={data} textColour={textColour} animRefs={textAnimRefs} />
+    <div className="flex flex-col justify-start lg:pb-16"
+         style={{ minHeight: "25vh" }}>
+    <PreviewText data={data} textColour={textColour} animRefs={textAnimRefs} />
     </div>
     <div className={`relative  w-full h-full row-start-2`}>
       <PreviewImage data={data} to={slug} animRefs={imageAnimRefs} />
@@ -84,7 +85,7 @@ function DoublePreview({
                          textColourLeft, textColourRight,
                          textAnimRefs, imageAnimRefs
                        }) {
-  return <div className={`overflow-hidden px-10 pb-10`}>
+  return <div className={`overflow-hidden sm:px-10 pb-10`}>
     <div className={"w-full flex flex-col lg:flex-row"}>
       <HalfWidthPreview node={nodeLeft} bgColour={bgColourLeft} textColour={textColourLeft} textAnimRefs={textAnimRefs}
                         imageAnimRefs={imageAnimRefs} />
@@ -170,7 +171,7 @@ export function IndexPageBody({ data }: any) {
                                                                          imageAnimRefs={addToRefs(imageAnimRefs)}
                                                                          imageLeft={(i / 3) % 2 !== 0} />)
   }
-  return <div className="pb-6 md:pb-48">
+  return <div className="pb-6 md:pb-36 lg:pb-48">
     <div id="devPreviews">
       {devPreviews}
     </div>

@@ -12,7 +12,7 @@ module.exports = {
       gray: colors.warmGray,
     },
     fontFamily: {
-      "display": ["Syne", "sans-serif"],
+      "display": ["Syne", "Inter", "sans-serif"],
       "sans": ["Inter", "sans-serif"],
     },
     extend: {

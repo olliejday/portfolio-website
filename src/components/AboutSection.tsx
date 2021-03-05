@@ -88,7 +88,7 @@ export function AboutSection({ data, firstPage }: { data: any, firstPage: boolea
 
   return <div className="w-screen my-10 p-7 md:p-10 box-border" ref={pinRef}>
     <div
-      className={`w-full box-border font-display ${globalColours.textLightest} overflow-hidden flex flex-row`}>
+      className={`w-full box-border font-medium font-display ${globalColours.textLightest} overflow-hidden flex flex-row`}>
       {/* Full page */}
       {timeline}
       {/* How much space for the title etc */}

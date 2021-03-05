@@ -25,7 +25,7 @@ function NavBarButton({ className, children, to }: { className: string, children
 NavBarButton.defaultProps = { className: "" }
 
 function NavBarMenu() {
-  return <div className="flex justify-center flex-row my-1 font-display">
+  return <div className="flex justify-center flex-row my-1 font-medium font-display">
     {/*<NavBarButton to="/#devPreviews">Development</NavBarButton>*/}
     <NavBarButton to="/#uxPreviews">UX Design</NavBarButton>
     <NavBarButton to="/about">About</NavBarButton>
