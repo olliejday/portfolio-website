@@ -3,7 +3,7 @@
   "private": true,
   "description": "Oliver Day web design and development portfolio",
   "version": "0.1.0",
-  "author": "Oliver Day <olliejdaystorage1@gmail.com>",
+  "author": "Oliver Day <ollie@odd.ooo>",
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
