@@ -2,7 +2,10 @@
 
 ## TODO
 
-* Choose Syne / Inter for display
+* Add back about page animations using locomotion
+* Check again with build and mobile
+  
+* Choose Syne / Inter for display also Montserrat text and Space grotesk for display
 * 💡 Change some eg. previews/about sections to light theme?
     Offer light/dark theme switch? incl on article page
 * Test 🧾 Check hosted site again on firefox and chrome both on desktop and mobile

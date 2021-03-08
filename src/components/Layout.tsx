@@ -1,11 +1,10 @@
 import * as React from "react"
 import { Navbar } from "./Navbar"
 import { graphql, StaticQuery } from "gatsby"
-import globalColours from "../styles/globalColours"
 
-export default function Layout({ children }) {
+export default function Layout({ children, hideOverflowY}) {
   return (
-    <div className={`relative w-full overflow-x-hidden`}>
+    <>
       <StaticQuery
         query={graphql`
         query {
@@ -20,7 +19,10 @@ export default function Layout({ children }) {
           <Navbar title={data.site.siteMetadata.title} />
         )}
       />
-      {children}
-    </div>
+      <div className={`relative w-full overflow-x-hidden ${hideOverflowY ? "" : "h-screen"}`}>
+        {children}
+      </div>
+    </>
   )
 }
+Layout.defaultProps = { hideOverflowY: false }

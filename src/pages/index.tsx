@@ -1,4 +1,5 @@
 import * as React from "react"
+import { useEffect, useRef } from "react"
 import Seo from "../components/Seo"
 import { IndexPageBody } from "../components/IndexPageBody"
 import Layout from "../components/Layout"
@@ -6,16 +7,24 @@ import HeroIndex from "../components/HeroIndex"
 import { graphql } from "gatsby"
 import globalColours from "../styles/globalColours"
 
-
 export default function IndexPage({ data }) {
+  const scrollRef = useRef(null)
+  useEffect(() => {import("locomotive-scroll").then(locomotiveModule => {
+    const scroll = new locomotiveModule.default({
+      el: scrollRef.current,
+      smooth: true,
+    })
+    setTimeout(() => scroll.update(), 300);
+  })
+  }, [])
   return (
-    <Layout>
+      <Layout hideOverflowY>
       <Seo title={data.site.siteMetadata.title} />
-      <div className={globalColours.bgDark}>
-        <HeroIndex title={data.site.siteMetadata.title} />
-        <IndexPageBody data={data} />
-      </div>
-    </Layout>
+        <div className={`${globalColours.bgDark}`} ref={scrollRef}>
+          <HeroIndex title={data.site.siteMetadata.title} />
+          <IndexPageBody data={data} />
+        </div>
+      </Layout>
   )
 }
 
