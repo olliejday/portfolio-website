@@ -1,17 +1,19 @@
 import * as React from "react"
 import globalColours from "../styles/globalColours"
+import "./styles/aboutComponents.css"
 
 const textSm = "text-3xl md:text-6xl xl:text-7xl"
 const textMd = "text-4xl md:text-7xl xl:text-8xl"
 const textLg = "text-5xl md:text-8xl xl:text-9xl"
 
-function LeftTimeline(i: number, date: string, title: string, subtitle: string) {
+function LeftTimeline({i, date, title, subtitle} :
+                        { i: number, date: string, title: string, subtitle: string }) {
   return <div key={i}
-              className={`items-start text-left justify-around flex flex-col my-6 md:m-10`}
+              className={`scrollFadeIn w-full items-start text-left justify-around flex flex-col my-6 md:m-10`}
               data-scroll data-scroll-speed="-3" data-scroll-direction="horizontal"
               data-scroll-delay="0.2"
   >
-    <div className="w-full md:w-3/4">
+    <div className="w-2/3">
       <p className={`${textSm} ${globalColours.textLight}`}>{date}</p>
       <p className={`${textMd} font-semibold`}>{title}</p>
       <p className={`${textSm} font-medium`}>{subtitle}</p>
@@ -19,13 +21,14 @@ function LeftTimeline(i: number, date: string, title: string, subtitle: string) 
   </div>
 }
 
-function RightTimeline(i: number, date: string, title: string, subtitle: string) {
+function RightTimeline({i, date, title, subtitle} :
+                         { i: number, date: string, title : string, subtitle: string }) {
   return <div key={i}
-              className={`items-end text-right justify-around flex flex-col my-6 md:m-10`}
+              className={`scrollFadeIn w-full items-end text-right justify-around flex flex-col my-6 md:m-10`}
               data-scroll data-scroll-speed="3" data-scroll-direction="horizontal"
               data-scroll-delay="0.2"
   >
-    <div className="w-full md:w-3/4">
+    <div className="w-2/3">
       <p className={`${textSm} ${globalColours.textLight}`}>{date}</p>
       <p className={`${textMd} font-semibold`}>{title}</p>
       <p className={`${textSm} font-medium`}>{subtitle}</p>
@@ -41,8 +44,10 @@ export function Timeline({ data }:
   return <div className="flex flex-col justify-around">
     {data.map(({ date, title, subtitle }, i) =>
       (i % 2) === 0
-        ? RightTimeline(i, date, title, subtitle)
-        : LeftTimeline(i, date, title, subtitle))}
+        ? <RightTimeline key={i} i={i} date={date}
+                         title={title} subtitle={subtitle} />
+        : <LeftTimeline key={i} i={i} date={date}
+                          title={title} subtitle={subtitle} />)}
   </div>
 }
 
@@ -50,7 +55,7 @@ export function AboutList({ data }: { data: [string] }) {
   const scrollDelay = 0.03
   return <div className="flex flex-col justify-end md:m-10">
     {data.map((item, i) =>
-      <p key={i} className={`${textMd} font-semibold my-5`}
+      <p key={i} className={`${textMd} scrollFadeIn font-semibold my-5`}
          data-scroll data-scroll-speed="-3" data-scroll-direction="horizontal"
          data-scroll-delay={`${Math.min((data.length + 1) * scrollDelay, 1) - (i + 1) * scrollDelay}`}
       >
@@ -69,10 +74,10 @@ export function Contact({
     <div className="mt-10 relative"
          data-scroll data-scroll-speed="2" data-scroll-delay="0.1">
       <p className={`${textMd} my-3 md:my-10 font-medium`}>
-        {cv.map(([title, file], i) => (<>
+        {cv.map(([title, file], i) => (<React.Fragment key={i}>
           <a key={i} className="hover:underline" href={file}>{title}</a>
-          <span> {i < cv.length - 1 ? "/ " : ""}</span>
-        </>))}</p>
+          <span key={"span" + i}> {i < cv.length - 1 ? "/ " : ""}</span>
+        </React.Fragment>))}</p>
     </div>
     <div className="relative"
          data-scroll data-scroll-speed="2" data-scroll-delay="0.05">
@@ -94,7 +99,8 @@ export function AboutImage({ image }) {
 
 export function AboutBody({ data }) {
   const scrollDelay = 0.05
-  return data.body.map((b, i) => <div className="relative"
+  return data.body.map((b, i) => <div key={i}
+                                      className="relative"
                                       data-scroll data-scroll-speed="2"
                                       data-scroll-delay={`${Math.min((data.body.length + 1) * scrollDelay, 1) - (i + 1) * scrollDelay}`}
   >
@@ -105,7 +111,7 @@ export function AboutBody({ data }) {
 export function AboutSubtitle({
                                 subtitle
                               }: { subtitle: string }) {
-  return <div className="relative"
+  return <div className="relative my-5"
               data-scroll data-scroll-speed="2" data-scroll-delay="0.3">
     <p key={subtitle} className={`${textMd} font-semibold my-3 md:m-5`}>
       {subtitle}

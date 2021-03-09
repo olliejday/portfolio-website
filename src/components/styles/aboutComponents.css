@@ -1,0 +1,9 @@
+
+.scrollFadeIn{
+    opacity: 0;
+    transition: opacity 1s linear;
+}
+
+.scrollFadeIn.is-inview {
+    opacity: 1;
+}

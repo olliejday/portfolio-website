@@ -2,7 +2,9 @@
 
 ## TODO
 
-* Add back about page animations using locomotion
+* Work on all scroll animations - 
+    bring back smooth scroll nav bar - not a priority
+        https://github.com/locomotivemtl/locomotive-scroll/issues/134
 * Check again with build and mobile
   
 * Choose Syne / Inter for display also Montserrat text and Space grotesk for display

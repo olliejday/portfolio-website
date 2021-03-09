@@ -3,8 +3,8 @@ import { AboutBody, AboutImage, AboutList, AboutSubtitle, AboutTitle, Contact, T
 import globalColours from "../styles/globalColours"
 
 
-export function AboutSection({ data, firstPage }: { data: any, firstPage: boolean }) {
-
+export function AboutSection({ data, lastPage, i }:
+                               { data: any, lastPage: boolean, i: number }) {
   // parse the data into compoenents
   // if there are present it changes layout
   const image = data.hasOwnProperty("image") ? <AboutImage image={data.image} /> : null
@@ -19,15 +19,27 @@ export function AboutSection({ data, firstPage }: { data: any, firstPage: boolea
   const subtitle = data.hasOwnProperty("subtitle") ?
     <AboutSubtitle subtitle={data.subtitle} /> : null
   const body = data.hasOwnProperty("body") ? <AboutBody data={data} /> : null
-
-  return <div className="w-screen my-10 p-7 md:p-10 box-border" >
+  console.log(i)
+  return <div className={`w-screen p-7 md:p-10 box-border flex flex-col 
+              ${i > 0 ? "justify-center" : ""} items-center`}
+              style={fullpage ?
+                {
+                  height: "100vh", marginBottom: lastPage ? "" : "10vh",
+                  marginTop: i > 0 ? "10vh" : ""
+                }
+                : {
+                  height: "150vh", marginBottom: lastPage ? "" : "10vh",
+                  marginTop: i > 0 ? "10vh" : "",
+                  paddingTop: i > 0 ? "25vh" : ""
+                }} id={"pinSection" + i}>
     <div
-      className={`w-full box-border font-medium font-display ${globalColours.textLightest} flex flex-row`}>
+      className={`w-full box-border font-medium font-display ${globalColours.textLightest} flex flex-row`}
+      data-scroll data-scroll-sticky data-scroll-target={fullpage ? null : "#pinSection" + i}>
       {/* Full page */}
       {timeline}
       {/* How much space for the title etc */}
       <div
-        className={fullpage ? "" : `${halfpage ? `md:w-2/3` : ""} relative z-10 flex flex-col md:p-10`}>
+        className={fullpage ? "" : `${halfpage ? `md:w-2/3` : ""} z-10 flex flex-col md:p-10`}>
         {title}
         {subtitle}
         {body}
@@ -41,4 +53,4 @@ export function AboutSection({ data, firstPage }: { data: any, firstPage: boolea
   </div>
 }
 
-AboutSection.defaultProps = { firstPage: false }
+AboutSection.defaultProps = { lastPage: false }
