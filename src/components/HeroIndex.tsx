@@ -33,7 +33,7 @@ function HeroText({ title }: HeroTypes & HeroTextTypes) {
   return <>
     <div className={`${textBodySm} ${globalColours.textLightest} row-start-2 col-span-10 \
     sm:col-span-6 lg:col-span-5 relative my-5 z-10`}
-         data-scroll data-scroll-speed="1.5">
+         data-scroll data-scroll-speed="1.5" data-scroll-delay="0.3">
       <div className="space-y-3 my-3">
         {preview.body.map((el, i) => <p key={"body " + i}>{el}</p>)}
       </div>

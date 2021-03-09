@@ -9,7 +9,7 @@ const textMd = "xl:text-6xl md:text-5xl text-4xl"
 function PreviewText({ data, textColour }) {
   return <>
     <div className="relative"
-         data-scroll data-scroll-speed="3" >
+         data-scroll data-scroll-speed="3" data-scroll-delay="0.3">
       <Link to={data.fields.slug}>
         <p
         key={data.frontmatter.title + "1"}
@@ -17,7 +17,7 @@ function PreviewText({ data, textColour }) {
       </Link>
     </div>
     <div className="relative"
-    data-scroll data-scroll-speed="3" data-scroll-delay="0.33">
+    data-scroll data-scroll-speed="3" data-scroll-delay="0.1">
       <Link to={data.fields.slug}>
         <p
         key={data.frontmatter.subtitle + "2"}
@@ -67,7 +67,7 @@ function HalfWidthPreview({ node, bgColour, textColour }) {
   const data = node.childMdx
   const slug = data.fields.slug
   return <div
-    className={`w-full px-10 lg:mx-5 py-6 my-5 overflow-hidden box-border grid grid-rows-2 gap-16 ${bgColour}`}>
+    className={`w-full px-10 lg:mx-5 py-6 my-5  box-border grid grid-rows-2 gap-16 ${bgColour}`}>
     <div className="flex flex-col justify-start lg:pb-16"
          style={{ minHeight: "25vh" }}>
     <PreviewText data={data} textColour={textColour}/>

@@ -20,7 +20,7 @@ export default function AboutPage() {
   return (
     <Layout hideOverflowY>
       <Seo title="About" />
-      <div className={`flex flex-col items-center justify-around ${globalColours.bgDark}`}
+      <div className={`flex flex-col items-center justify-around ${globalColours.bgDark} pb-6 md:pb-36 lg:pb-48`}
            ref={scrollRef}>
         {about.map((data, i) => <AboutSection key={i} firstPage={i === 0} data={data} />)}
       </div>
